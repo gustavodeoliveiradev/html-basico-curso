@@ -10,9 +10,32 @@
 
 **Um curso modular, interativo e 100% gratuito para aprender HTML do zero.**
 
-[▶ Começar o Curso](https://seu-usuario.github.io/html-basico-curso/) · [📋 Roadmap](#roadmap) · [🤝 Contribuir](#contribuição)
+[▶ Começar o Curso](https://gustavodeoliveiradev.github.io/html-basico-curso/) · [📋 Roadmap](#roadmap) · [🤝 Contribuir](#contribuição)
 
 </div>
+
+---
+
+## 👨‍💻 Autor
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/gustavodeoliveiradev">
+        <img src="https://github.com/gustavodeoliveiradev.png" width="100px;" alt="Gustavo de Oliveira" style="border-radius: 50%;"/>
+        <br />
+        <sub><b>Gustavo de Oliveira</b></sub>
+      </a>
+      <br />
+      <a href="https://www.linkedin.com/in/lgustavodeoliveira/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+      <a href="mailto:gustavodeoliveira.dev@gmail.com">
+        <img src="https://img.shields.io/badge/Email-EA4335?logo=gmail&logoColor=white" alt="Email" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -68,7 +91,7 @@ html-basico-curso/
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/html-basico-curso.git
+   git clone https://github.com/gustavodeoliveiradev/html-basico-curso.git
    cd html-basico-curso
    ```
 
@@ -86,13 +109,11 @@ html-basico-curso/
 
    Ou use uma extensão como **Live Server** no VS Code.
 
-### Online (Deploy)
+### Online
 
-O projeto pode ser hospedado gratuitamente em:
+Acesse diretamente pelo GitHub Pages:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Netlify](https://www.netlify.com/)
-- [Vercel](https://vercel.com/)
+👉 **[gustavodeoliveiradev.github.io/html-basico-curso](https://gustavodeoliveiradev.github.io/html-basico-curso/)**
 
 ---
 
@@ -155,6 +176,8 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 <div align="center">
 
-Feito com 💜 · 2026
+Feito com 💜 por <a href="https://github.com/gustavodeoliveiradev"><b>Gustavo de Oliveira</b></a> · 2026
+
+<a href="https://www.linkedin.com/in/lgustavodeoliveira/">LinkedIn</a> · <a href="mailto:gustavodeoliveira.dev@gmail.com">Email</a>
 
 </div>

@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Links e Navegação — HTML Básico</title>
+
+  <!-- Anti-flash: aplica tema IMEDIATAMENTE antes de renderizar -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('html_curso_theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <link rel="stylesheet" href="../../css/components.css">
@@ -108,7 +119,7 @@
 
         <footer style="margin-top: var(--space-16); padding: var(--space-8) 0; border-top: 1px solid var(--border-color); text-align: center;">
           <p style="color: var(--text-muted); font-size: var(--text-sm);">
-            Feito com 💜 · Curso Básico de HTML · 2026
+            Feito com 💜 por <a href="https://github.com/gustavodeoliveiradev" style="color: var(--color-primary); font-weight: 600;">Gustavo de Oliveira</a> · 2026
           </p>
         </footer>
       </div>
@@ -124,9 +135,8 @@
     const moonIcon = document.getElementById('moonIcon');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('html_curso_theme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    // Sync icon with current theme (already set by anti-flash script)
+    updateThemeIcon(html.getAttribute('data-theme'));
 
     themeToggle.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
