@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curso interativo e gratuito de HTML básico. Aprenda HTML do zero com exercícios práticos e módulos organizados.">
+  <title>HTML Básico — Curso Interativo</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="./index.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">&lt;/&gt;</div>
+          <span>HTML Básico</span>
+        </a>
+        <div class="sidebar-subtitle">Curso Interativo</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Navegação</div>
+        <a href="./index.html" class="sidebar-link active">
+          <span class="sidebar-link-number" style="background: var(--color-primary); color: white;">🏠</span>
+          <span>Início</span>
+        </a>
+
+        <div class="sidebar-section-title" style="margin-top: var(--space-4);">Módulos</div>
+        <a href="./modules/01-introducao/index.html" class="sidebar-link" data-module-id="1">
+          <span class="sidebar-link-number" style="background: var(--mod-01); color: white;">1</span>
+          <span>Introdução</span>
+        </a>
+        <a href="./modules/02-estrutura-basica/index.html" class="sidebar-link" data-module-id="2">
+          <span class="sidebar-link-number" style="background: var(--mod-02); color: white;">2</span>
+          <span>Estrutura Básica</span>
+        </a>
+        <a href="./modules/03-textos-e-titulos/index.html" class="sidebar-link" data-module-id="3">
+          <span class="sidebar-link-number" style="background: var(--mod-03); color: white;">3</span>
+          <span>Textos e Títulos</span>
+        </a>
+        <a href="./modules/04-links-e-navegacao/index.html" class="sidebar-link" data-module-id="4">
+          <span class="sidebar-link-number" style="background: var(--mod-04); color: white;">4</span>
+          <span>Links e Navegação</span>
+        </a>
+        <a href="./modules/05-imagens/index.html" class="sidebar-link" data-module-id="5">
+          <span class="sidebar-link-number" style="background: var(--mod-05); color: white;">5</span>
+          <span>Imagens</span>
+        </a>
+        <a href="./modules/06-listas/index.html" class="sidebar-link" data-module-id="6">
+          <span class="sidebar-link-number" style="background: var(--mod-06); color: white;">6</span>
+          <span>Listas</span>
+        </a>
+        <a href="./modules/07-tabelas/index.html" class="sidebar-link" data-module-id="7">
+          <span class="sidebar-link-number" style="background: var(--mod-07); color: white;">7</span>
+          <span>Tabelas</span>
+        </a>
+        <a href="./modules/08-formularios/index.html" class="sidebar-link" data-module-id="8">
+          <span class="sidebar-link-number" style="background: var(--mod-08); color: white;">8</span>
+          <span>Formulários</span>
+        </a>
+        <a href="./modules/09-semantica-html5/index.html" class="sidebar-link" data-module-id="9">
+          <span class="sidebar-link-number" style="background: var(--mod-09); color: white;">9</span>
+          <span>Semântica HTML5</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span style="font-size: var(--text-xs); color: var(--text-muted);">v1.0.0</span>
+        <span style="font-size: var(--text-xs); color: var(--text-muted);">🚀</span>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Header -->
+      <header class="main-header">
+        <button class="mobile-toggle" aria-label="Abrir menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+
+        <div style="display: flex; align-items: center; gap: var(--space-3);">
+          <div class="progress-container" style="width: 200px; display: none;">
+            <div class="progress-label">
+              <span>Progresso</span>
+              <span class="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+            <svg id="sunIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="main-content">
+        <!-- Hero -->
+        <section class="hero animate-fade-in-up">
+          <div class="hero-badge">
+            <span>🎓</span>
+            <span>Curso 100% Gratuito</span>
+          </div>
+          <h1 class="hero-title">
+            Aprenda <span class="text-gradient">HTML</span> do Zero
+          </h1>
+          <p class="hero-subtitle">
+            Um curso interativo, modular e prático para quem quer dar os primeiros passos no desenvolvimento web. 
+            Navegue pelos módulos, pratique com exercícios e acompanhe seu progresso.
+          </p>
+          <div class="hero-actions">
+            <a href="./modules/01-introducao/index.html" class="btn btn-primary btn-lg">
+              <span>▶</span>
+              <span>Começar Agora</span>
+            </a>
+            <a href="https://github.com" target="_blank" class="btn btn-secondary btn-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>Ver no GitHub</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-grid animate-fade-in-up animate-delay-1">
+          <div class="stat-card">
+            <div class="stat-value">9</div>
+            <div class="stat-label">Módulos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">Exercícios</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">0<span class="progress-count" style="font-size: var(--text-lg); color: var(--text-muted);">/9</span></div>
+            <div class="stat-label">Concluídos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value text-gradient">100%</div>
+            <div class="stat-label">Gratuito</div>
+          </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="card animate-fade-in-up animate-delay-2" style="margin-bottom: var(--space-10);">
+          <div class="card-body">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+              <div>
+                <h2 style="font-size: var(--text-xl); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-1);">Seu Progresso</h2>
+                <p style="font-size: var(--text-sm); color: var(--text-secondary);">Clique em um módulo disponível para começar. Complete para desbloquear o próximo!</p>
+              </div>
+              <div style="text-align: right;">
+                <div class="progress-percent" style="font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary);">0%</div>
+                <div class="progress-count" style="font-size: var(--text-sm); color: var(--text-muted); font-weight: 500;">0/9 módulos</div>
+              </div>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 0%"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modules Grid -->
+        <section>
+          <h2 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-6); color: var(--text-primary);">
+            📚 Módulos do Curso
+          </h2>
+
+          <div class="modules-grid">
+            <!-- Módulo 01 -->
+            <div class="module-card" data-module-id="1" style="--module-color: var(--mod-01);">
+              <div class="module-number">1</div>
+              <h3 class="module-title">Introdução ao HTML</h3>
+              <p class="module-desc">O que é HTML, sua história, como funciona a web e as ferramentas que você precisa para começar.</p>
+              <div class="module-meta">
+                <span>⏱️ ~10 min</span>
+                <span class="module-status status-progress">▶ Disponível</span>
+              </div>
+            </div>
+
+            <!-- Módulo 02 -->
+            <div class="module-card" data-module-id="2" style="--module-color: var(--mod-02);">
+              <div class="module-number">2</div>
+              <h3 class="module-title">Estrutura Básica</h3>
+              <p class="module-desc">Conhecendo o &lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt; e &lt;body&gt;. A anatomia de uma página HTML.</p>
+              <div class="module-meta">
+                <span>⏱️ ~15 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 03 -->
+            <div class="module-card" data-module-id="3" style="--module-color: var(--mod-03);">
+              <div class="module-number">3</div>
+              <h3 class="module-title">Textos e Títulos</h3>
+              <p class="module-desc">Trabalhando com &lt;h1&gt; a &lt;h6&gt;, parágrafos, quebras de linha e linhas horizontais.</p>
+              <div class="module-meta">
+                <span>⏱️ ~15 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 04 -->
+            <div class="module-card" data-module-id="4" style="--module-color: var(--mod-04);">
+              <div class="module-number">4</div>
+              <h3 class="module-title">Links e Navegação</h3>
+              <p class="module-desc">Criando links com &lt;a&gt;, navegação entre páginas, âncoras e atributos importantes.</p>
+              <div class="module-meta">
+                <span>⏱️ ~15 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 05 -->
+            <div class="module-card" data-module-id="5" style="--module-color: var(--mod-05);">
+              <div class="module-number">5</div>
+              <h3 class="module-title">Imagens</h3>
+              <p class="module-desc">Inserindo imagens com &lt;img&gt;, atributo alt, caminhos relativos e absolutos.</p>
+              <div class="module-meta">
+                <span>⏱️ ~10 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 06 -->
+            <div class="module-card" data-module-id="6" style="--module-color: var(--mod-06);">
+              <div class="module-number">6</div>
+              <h3 class="module-title">Listas</h3>
+              <p class="module-desc">Listas ordenadas, não ordenadas, de definição e listas aninhadas.</p>
+              <div class="module-meta">
+                <span>⏱️ ~10 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 07 -->
+            <div class="module-card" data-module-id="7" style="--module-color: var(--mod-07);">
+              <div class="module-number">7</div>
+              <h3 class="module-title">Tabelas</h3>
+              <p class="module-desc">Construindo tabelas com &lt;table&gt;, cabeçalhos, células, linhas e boas práticas.</p>
+              <div class="module-meta">
+                <span>⏱️ ~15 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 08 -->
+            <div class="module-card" data-module-id="8" style="--module-color: var(--mod-08);">
+              <div class="module-number">8</div>
+              <h3 class="module-title">Formulários</h3>
+              <p class="module-desc">Criando formulários interativos com inputs, labels, buttons e diferentes tipos de campos.</p>
+              <div class="module-meta">
+                <span>⏱️ ~20 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+
+            <!-- Módulo 09 -->
+            <div class="module-card" data-module-id="9" style="--module-color: var(--mod-09);">
+              <div class="module-number">9</div>
+              <h3 class="module-title">Semântica HTML5</h3>
+              <p class="module-desc">Tags semânticas como &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;footer&gt; e acessibilidade.</p>
+              <div class="module-meta">
+                <span>⏱️ ~15 min</span>
+                <span class="module-status status-locked">🔒 Bloqueado</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="margin-top: var(--space-16); padding: var(--space-8) 0; border-top: 1px solid var(--border-color); text-align: center;">
+          <p style="color: var(--text-muted); font-size: var(--text-sm);">
+            Feito com 💜 · Curso Básico de HTML · 2026
+          </p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="./js/navigation.js"></script>
+  <script src="./js/progress.js"></script>
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const html = document.documentElement;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('html_curso_theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('html_curso_theme', next);
+      updateThemeIcon(next);
+    });
+
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

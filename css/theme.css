@@ -1,0 +1,33 @@
+/* ============================================
+   Theme CSS: Dark/Light Mode & Color Schemes
+   ============================================ */
+
+/* ---------- Theme Transition ---------- */
+body, .card, .sidebar, .main-header, .btn-secondary, .theme-toggle {
+  transition: background-color var(--transition-base), 
+              border-color var(--transition-base), 
+              color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: var(--color-primary-light);
+  color: white;
+}
+
+/* ---------- Focus Styles ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  .sidebar, .main-header, .theme-toggle, .mobile-toggle {
+    display: none !important;
+  }
+  .main {
+    margin-left: 0 !important;
+  }
+}
