@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Introdução ao HTML — HTML Básico</title>
 
-  <!-- Anti-flash: aplica tema IMEDIATAMENTE antes de renderizar -->
   <script>
     (function() {
       const saved = localStorage.getItem('html_curso_theme');
@@ -42,7 +41,7 @@
         </a>
 
         <div class="sidebar-section-title" style="margin-top: var(--space-4);">Módulos</div>
-        <a href="../01-introducao/index.html" class="sidebar-link" data-module-id="1">
+        <a href="../01-introducao/index.html" class="sidebar-link active" data-module-id="1">
           <span class="sidebar-link-number" style="background: var(--mod-01); color: white;">1</span>
           <span>Introdução</span>
         </a>
@@ -101,19 +100,287 @@
       </header>
 
       <div class="main-content">
-        <!-- Conteúdo do módulo será inserido aqui -->
 
-        <div class="card" style="text-align: center; padding: var(--space-16);">
-          <div style="font-size: 4rem; margin-bottom: var(--space-4);">🚧</div>
-          <h2 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
-            Módulo em Construção
-          </h2>
-          <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto var(--space-6);">
-            Este módulo ainda está sendo desenvolvido. Volte em breve para conferir o conteúdo completo!
+        <!-- Module Header -->
+        <div class="module-header">
+          <div class="module-header-top">
+            <span class="module-header-badge" style="background: var(--mod-01);">Módulo 01</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted);">⏱️ ~10 minutos</span>
+          </div>
+          <h1 class="module-header-title">Introdução ao HTML</h1>
+          <p class="module-header-desc">
+            Neste primeiro módulo, você vai entender o que é HTML, como ele surgiu, como funciona a web e quais ferramentas você precisa para começar a programar.
           </p>
-          <a href="../../index.html" class="btn btn-primary">
+        </div>
+
+        <!-- Section: O que é HTML -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(99,102,241,0.1);">📖</span>
+            O que é HTML?
+          </h2>
+
+          <div class="content-text">
+            <p><strong>HTML</strong> significa <em>HyperText Markup Language</em> (Linguagem de Marcação de Hipertexto, em português). Não se assuste com o nome complicado — HTML é mais simples do que parece!</p>
+
+            <p>Imagine que você está escrevendo um documento no Word. Você usa negrito, itálico, títulos, listas... O HTML faz a mesma coisa, mas para páginas da internet. Ele diz ao navegador (Chrome, Firefox, Edge) como exibir o conteúdo.</p>
+
+            <p>HTML <strong>não é uma linguagem de programação</strong> — é uma <strong>linguagem de marcação</strong>. Isso significa que você não "programa" lógica ou cálculos. Você apenas <strong>marca</strong> o conteúdo para que o navegador saiba o que é um título, o que é um parágrafo, o que é uma imagem, e assim por diante.</p>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">💡</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Pense assim:</div>
+              <div class="info-box-text">
+                Se a web fosse uma casa, o HTML seria a <strong>estrutura</strong> (paredes, portas, janelas). O CSS seria a <strong>pintura e decoração</strong>. E o JavaScript seria a <strong>eletricidade e os aparelhos</strong> que fazem coisas acontecerem.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: História -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(139,92,246,0.1);">📜</span>
+            Um Pouco de História
+          </h2>
+
+          <div class="content-text">
+            <p>O HTML foi criado em <strong>1991</strong> por <strong>Tim Berners-Lee</strong>, um cientista britânico que trabalhava no CERN (organização europeia de pesquisa nuclear). Ele queria uma forma de compartilhar documentos entre pesquisadores de diferentes lugares do mundo.</p>
+
+            <p>Desde então, o HTML evoluiu muito:</p>
+          </div>
+
+          <table class="tags-table">
+            <thead>
+              <tr>
+                <th>Versão</th>
+                <th>Ano</th>
+                <th>Principais novidades</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>HTML 1.0</code></td>
+                <td>1991</td>
+                <td>A primeira versão, com tags básicas como títulos, parágrafos e links</td>
+              </tr>
+              <tr>
+                <td><code>HTML 4.01</code></td>
+                <td>1999</td>
+                <td>Tabelas, formulários, frames e folhas de estilo</td>
+              </tr>
+              <tr>
+                <td><code>XHTML</code></td>
+                <td>2000</td>
+                <td>HTML escrito com regras mais rígidas do XML</td>
+              </tr>
+              <tr>
+                <td><code>HTML5</code></td>
+                <td>2014</td>
+                <td>Vídeo, áudio, canvas, tags semânticas, geolocalização</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info-box">
+            <span class="info-box-icon">🎯</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Hoje usamos HTML5</div>
+              <div class="info-box-text">
+                A versão atual e mais utilizada é o <strong>HTML5</strong>. É ele que vamos aprender neste curso. O HTML5 trouxe muitas melhorias, especialmente tags semânticas que deixam o código mais organizado e acessível.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Como funciona a Web -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(236,72,153,0.1);">🌐</span>
+            Como Funciona a Web?
+          </h2>
+
+          <div class="content-text">
+            <p>Para entender o HTML, é importante saber como uma página da web chega até você. O processo é mais simples do que parece:</p>
+          </div>
+
+          <div class="diagram-box">
+            <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: var(--space-2);">
+              <div class="diagram-step">
+                <span class="diagram-step-icon">💻</span>
+                <span class="diagram-step-label">Você digita<br>o endereço</span>
+              </div>
+              <span class="diagram-arrow">→</span>
+              <div class="diagram-step">
+                <span class="diagram-step-icon">📡</span>
+                <span class="diagram-step-label">Requisição vai<br>para a internet</span>
+              </div>
+              <span class="diagram-arrow">→</span>
+              <div class="diagram-step">
+                <span class="diagram-step-icon">🖥️</span>
+                <span class="diagram-step-label">Servidor recebe<br>e processa</span>
+              </div>
+              <span class="diagram-arrow">→</span>
+              <div class="diagram-step">
+                <span class="diagram-step-icon">📄</span>
+                <span class="diagram-step-label">Servidor envia<br>o arquivo HTML</span>
+              </div>
+              <span class="diagram-arrow">→</span>
+              <div class="diagram-step">
+                <span class="diagram-step-icon">🔍</span>
+                <span class="diagram-step-label">Navegador lê<br>e exibe a página</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-text">
+            <p>Quando você acessa um site, seu navegador (Chrome, Firefox, etc.) faz uma <strong>requisição</strong> para um <strong>servidor</strong>. O servidor responde enviando arquivos — geralmente HTML, CSS e JavaScript. O navegador lê esses arquivos e monta a página que você vê na tela.</p>
+
+            <p>O HTML é sempre o <strong>primeiro arquivo</strong> que o navegador recebe. É ele que diz: "Ei, aqui tem um título, aqui tem um parágrafo, aqui tem uma imagem..."</p>
+          </div>
+        </div>
+
+        <!-- Section: Ferramentas -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(245,158,11,0.1);">🛠️</span>
+            Ferramentas que Você Precisa
+          </h2>
+
+          <div class="content-text">
+            <p>A boa notícia é que você precisa de muito pouco para começar:</p>
+          </div>
+
+          <div class="modules-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+            <div class="card" style="padding: var(--space-5);">
+              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-3);">📝</div>
+              <h3 style="font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Editor de Código</h3>
+              <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+                Recomendamos o <strong>VS Code</strong> (gratuito). Outras opções: Sublime Text, Atom, Notepad++.
+              </p>
+            </div>
+
+            <div class="card" style="padding: var(--space-5);">
+              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-3);">🔍</div>
+              <h3 style="font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Navegador</h3>
+              <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+                Qualquer um serve: Chrome, Firefox, Edge, Safari. Use o que você já tem instalado.
+              </p>
+            </div>
+
+            <div class="card" style="padding: var(--space-5);">
+              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-3);">💪</div>
+              <h3 style="font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Vontade de Aprender</h3>
+              <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+                Isso é o mais importante! Não precisa saber nada de programação para começar.
+              </p>
+            </div>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-box-icon">⚠️</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Não use Word ou bloco de notas comum!</div>
+              <div class="info-box-text">
+                Editores de código como o VS Code ajudam com <strong>syntax highlighting</strong> (colorir o código), <strong>autocompletar</strong> e <strong>indentação automática</strong>. Isso faz uma enorme diferença na hora de programar.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Primeiro Código -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(16,185,129,0.1);">👋</span>
+            Seu Primeiro Código: Hello World
+          </h2>
+
+          <div class="content-text">
+            <p>A tradição na programação é começar com um "Hello World" — um programa simples que exibe essa mensagem. Vamos fazer isso em HTML!</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 index.html</span>
+              <span style="font-size: var(--text-xs); color: var(--text-muted);">Copie este código</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html&gt;</span>
+  <span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span><span class="code-text">Minha Primeira Página</span><span class="code-tag">&lt;/title&gt;</span>
+  <span class="code-tag">&lt;/head&gt;</span>
+  <span class="code-tag">&lt;body&gt;</span>
+    <span class="code-tag">&lt;h1&gt;</span><span class="code-text">Hello World!</span><span class="code-tag">&lt;/h1&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span><span class="code-text">Estou aprendendo HTML!</span><span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header">
+              <span>👁️ Resultado no navegador</span>
+            </div>
+            <div class="preview-box-body">
+              <h1 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Hello World!</h1>
+              <p style="color: var(--text-secondary);">Estou aprendendo HTML!</p>
+            </div>
+          </div>
+
+          <div class="content-text">
+            <p>Não se preocupe se não entendeu tudo ainda. Nos próximos módulos vamos explicar cada parte dessa estrutura em detalhes. O importante agora é ver que <strong>HTML é apenas texto com tags</strong>!</p>
+          </div>
+        </div>
+
+        <!-- Exercise Section -->
+        <div class="exercise-section">
+          <div class="exercise-badge">🎯 Exercício Prático</div>
+          <h2 class="exercise-title">Crie sua Primeira Página</h2>
+          <p class="exercise-desc">
+            Agora é sua vez! Siga os passos abaixo para criar sua primeira página HTML do zero.
+          </p>
+
+          <div class="exercise-task">
+            <div class="exercise-task-title">📋 Instruções:</div>
+            <ul class="exercise-task-list">
+              <li>Abra o VS Code (ou seu editor de código)</li>
+              <li>Crie um novo arquivo chamado <code>index.html</code></li>
+              <li>Copie o código "Hello World" acima</li>
+              <li>Salve o arquivo (Ctrl+S ou Cmd+S)</li>
+              <li>Clique duas vezes no arquivo para abrir no navegador</li>
+              <li>Veja o resultado na tela! 🎉</li>
+            </ul>
+          </div>
+
+          <div class="info-box" style="margin-bottom: 0;">
+            <span class="info-box-icon">🎨</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Desafio extra:</div>
+              <div class="info-box-text">
+                Tente alterar o texto "Hello World!" para o seu nome. Depois, mude o texto do parágrafo para uma frase sobre você. Salve e atualize o navegador (F5) para ver as mudanças!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="module-nav">
+          <a href="../../index.html" class="module-nav-btn module-nav-btn-prev">
             <span>←</span>
-            <span>Voltar ao Início</span>
+            <span>Início</span>
+          </a>
+
+          <button class="module-nav-btn module-nav-btn-complete" id="btnComplete" data-module="1">
+            <span>✓</span>
+            <span>Marcar como Concluído</span>
+          </button>
+
+          <a href="../02-estrutura-basica/index.html" class="module-nav-btn module-nav-btn-next" id="btnNext">
+            <span>Próximo Módulo</span>
+            <span>→</span>
           </a>
         </div>
 
@@ -135,7 +402,6 @@
     const moonIcon = document.getElementById('moonIcon');
     const html = document.documentElement;
 
-    // Sync icon with current theme (already set by anti-flash script)
     updateThemeIcon(html.getAttribute('data-theme'));
 
     themeToggle.addEventListener('click', () => {
@@ -155,6 +421,52 @@
         moonIcon.style.display = 'block';
       }
     }
+
+    // Module completion
+    const btnComplete = document.getElementById('btnComplete');
+    const btnNext = document.getElementById('btnNext');
+    const moduleId = parseInt(btnComplete.dataset.module);
+
+    // Check if already completed
+    if (ProgressTracker.isCompleted(moduleId)) {
+      btnComplete.classList.add('completed');
+      btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+    }
+
+    btnComplete.addEventListener('click', () => {
+      if (!ProgressTracker.isCompleted(moduleId)) {
+        ProgressTracker.markComplete(moduleId);
+        btnComplete.classList.add('completed');
+        btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+
+        // Add celebration effect
+        btnComplete.style.transform = 'scale(1.05)';
+        setTimeout(() => {
+          btnComplete.style.transform = '';
+        }, 200);
+      }
+    });
+
+    // Update next button state
+    function updateNextButton() {
+      if (ProgressTracker.isCompleted(moduleId)) {
+        btnNext.classList.remove('disabled');
+      } else {
+        btnNext.classList.add('disabled');
+        btnNext.style.opacity = '0.5';
+        btnNext.style.pointerEvents = 'none';
+      }
+    }
+
+    // Initial check
+    setTimeout(updateNextButton, 100);
+
+    // Re-check when progress updates
+    const originalUpdateUI = ProgressTracker.updateUI;
+    ProgressTracker.updateUI = function() {
+      originalUpdateUI.call(this);
+      updateNextButton();
+    };
   </script>
 </body>
 </html>

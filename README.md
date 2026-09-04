@@ -122,7 +122,7 @@ Acesse diretamente pelo GitHub Pages:
 | Dia | Foco | Status |
 |:---:|:---|:---:|
 | **Dia 1** | Estrutura base, CSS global, hub inicial | ✅ Concluído |
-| **Dia 2** | Módulos 01, 02 e 03 | 🔄 Em breve |
+| **Dia 2** | Módulos 01, 02 e 03 | ✅ Concluído |
 | **Dia 3** | Módulos 04, 05 e 06 | 🔄 Em breve |
 | **Dia 4** | Módulos 07 e 08 | 🔄 Em breve |
 | **Dia 5** | Módulo 09 + polimentos finais + deploy | 🔄 Em breve |
@@ -131,9 +131,9 @@ Acesse diretamente pelo GitHub Pages:
 
 | # | Módulo | Tempo | Status |
 |:---:|:---|:---:|:---:|
-| 01 | Introdução ao HTML | ~10 min | 🔄 Em breve |
-| 02 | Estrutura Básica | ~15 min | 🔄 Em breve |
-| 03 | Textos e Títulos | ~15 min | 🔄 Em breve |
+| 01 | Introdução ao HTML | ~10 min | ✅ Concluído |
+| 02 | Estrutura Básica | ~15 min | ✅ Concluído |
+| 03 | Textos e Títulos | ~15 min | ✅ Concluído |
 | 04 | Links e Navegação | ~15 min | 🔄 Em breve |
 | 05 | Imagens | ~10 min | 🔄 Em breve |
 | 06 | Listas | ~10 min | 🔄 Em breve |

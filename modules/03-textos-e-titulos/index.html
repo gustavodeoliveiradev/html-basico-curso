@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Textos e Títulos — HTML Básico</title>
 
-  <!-- Anti-flash: aplica tema IMEDIATAMENTE antes de renderizar -->
   <script>
     (function() {
       const saved = localStorage.getItem('html_curso_theme');
@@ -50,7 +49,7 @@
           <span class="sidebar-link-number" style="background: var(--mod-02); color: white;">2</span>
           <span>Estrutura Básica</span>
         </a>
-        <a href="../03-textos-e-titulos/index.html" class="sidebar-link" data-module-id="3">
+        <a href="../03-textos-e-titulos/index.html" class="sidebar-link active" data-module-id="3">
           <span class="sidebar-link-number" style="background: var(--mod-03); color: white;">3</span>
           <span>Textos e Títulos</span>
         </a>
@@ -101,19 +100,363 @@
       </header>
 
       <div class="main-content">
-        <!-- Conteúdo do módulo será inserido aqui -->
 
-        <div class="card" style="text-align: center; padding: var(--space-16);">
-          <div style="font-size: 4rem; margin-bottom: var(--space-4);">🚧</div>
-          <h2 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
-            Módulo em Construção
-          </h2>
-          <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto var(--space-6);">
-            Este módulo ainda está sendo desenvolvido. Volte em breve para conferir o conteúdo completo!
+        <!-- Module Header -->
+        <div class="module-header">
+          <div class="module-header-top">
+            <span class="module-header-badge" style="background: var(--mod-03);">Módulo 03</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted);">⏱️ ~15 minutos</span>
+          </div>
+          <h1 class="module-header-title">Textos e Títulos</h1>
+          <p class="module-header-desc">
+            Aprenda a criar títulos hierárquicos, parágrafos, quebras de linha e como dar ênfase ao texto usando as tags corretas.
           </p>
-          <a href="../../index.html" class="btn btn-primary">
+        </div>
+
+        <!-- Section: Títulos -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(236,72,153,0.1);">📰</span>
+            Títulos: &lt;h1&gt; a &lt;h6&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>O HTML oferece <strong>seis níveis de títulos</strong>, do <code>&lt;h1&gt;</code> (mais importante) ao <code>&lt;h6&gt;</code> (menos importante). Eles funcionam como a hierarquia de um livro: capítulo, seção, subseção...</p>
+
+            <p>Pense nos títulos como a estrutura de um documento:</p>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header">
+              <span>👁️ Visualização dos títulos</span>
+            </div>
+            <div class="preview-box-body">
+              <h1 style="font-size: var(--text-3xl); font-weight: 800; margin-bottom: var(--space-2); color: var(--text-primary);">Título H1 — Principal</h1>
+              <h2 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Título H2 — Seção</h2>
+              <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">Título H3 — Subseção</h3>
+              <h4 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">Título H4</h4>
+              <h5 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">Título H5</h5>
+              <h6 style="font-size: var(--text-sm); font-weight: 600; margin-bottom: 0; color: var(--text-primary);">Título H6</h6>
+            </div>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Código dos títulos</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;h1&gt;</span><span class="code-text">Título Principal da Página</span><span class="code-tag">&lt;/h1&gt;</span>
+<span class="code-tag">&lt;h2&gt;</span><span class="code-text">Capítulo 1</span><span class="code-tag">&lt;/h2&gt;</span>
+<span class="code-tag">&lt;h3&gt;</span><span class="code-text">Seção 1.1</span><span class="code-tag">&lt;/h3&gt;</span>
+<span class="code-tag">&lt;h4&gt;</span><span class="code-text">Subseção 1.1.1</span><span class="code-tag">&lt;/h4&gt;</span>
+<span class="code-tag">&lt;h5&gt;</span><span class="code-text">Detalhe</span><span class="code-tag">&lt;/h5&gt;</span>
+<span class="code-tag">&lt;h6&gt;</span><span class="code-text">Nota de rodapé</span><span class="code-tag">&lt;/h6&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-box-icon">⚠️</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Regra de ouro: um único &lt;h1&gt; por página!</div>
+              <div class="info-box-text">
+                Cada página deve ter <strong>apenas um</strong> <code>&lt;h1&gt;</code>. Ele representa o tema principal da página. Os demais títulos (<code>h2</code> a <code>h6</code>) organizam o conteúdo em seções e subseções. Não pule níveis (não vá de <code>h2</code> direto para <code>h4</code>)!
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">🔍</span>
+            <div class="info-box-content">
+              <div class="info-box-title">SEO e Acessibilidade</div>
+              <div class="info-box-text">
+                O Google usa os títulos para entender o conteúdo da sua página. Uma hierarquia bem organizada ajuda seu site a aparecer melhor nas buscas. Leitores de tela também usam os títulos para navegação — uma hierarquia correta é fundamental para acessibilidade.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Parágrafos -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(16,185,129,0.1);">📝</span>
+            Parágrafos: &lt;p&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>A tag <code>&lt;p&gt;</code> é usada para criar <strong>parágrafos</strong> de texto. Cada parágrafo é automaticamente separado dos outros por um espaço em branco.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Exemplo de parágrafos</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é o primeiro parágrafo.</span><span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é o segundo parágrafo. Note que há um espaço entre eles.</span><span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é o terceiro parágrafo. Cada tag &lt;p&gt; cria um bloco separado.</span><span class="code-tag">&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header">
+              <span>👁️ Resultado</span>
+            </div>
+            <div class="preview-box-body">
+              <p style="margin-bottom: var(--space-4); color: var(--text-primary);">Este é o primeiro parágrafo.</p>
+              <p style="margin-bottom: var(--space-4); color: var(--text-primary);">Este é o segundo parágrafo. Note que há um espaço entre eles.</p>
+              <p style="margin-bottom: 0; color: var(--text-primary);">Este é o terceiro parágrafo. Cada tag &lt;p&gt; cria um bloco separado.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Quebra de Linha -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(6,182,212,0.1);">↩️</span>
+            Quebra de Linha: &lt;br&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>A tag <code>&lt;br&gt;</code> (de <em>break</em>, quebra) cria uma <strong>quebra de linha</strong> dentro de um texto. Diferente do <code>&lt;p&gt;</code> que cria um novo parágrafo, o <code>&lt;br&gt;</code> apenas pula uma linha.</p>
+
+            <p>⚠️ <strong>Atenção:</strong> <code>&lt;br&gt;</code> é uma tag <strong>auto-fechada</strong> — ela não tem tag de fechamento!</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Exemplo de quebra de linha</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;p&gt;</span><span class="code-text">Rua das Flores, 123</span><span class="code-tag">&lt;br&gt;</span>
+<span class="code-text">Bairro Centro</span><span class="code-tag">&lt;br&gt;</span>
+<span class="code-text">São Paulo - SP</span><span class="code-tag">&lt;br&gt;</span>
+<span class="code-text">CEP: 01000-000</span><span class="code-tag">&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header">
+              <span>👁️ Resultado</span>
+            </div>
+            <div class="preview-box-body">
+              <p style="color: var(--text-primary);">
+                Rua das Flores, 123<br>
+                Bairro Centro<br>
+                São Paulo - SP<br>
+                CEP: 01000-000
+              </p>
+            </div>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-box-icon">⚠️</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Não abuse do &lt;br&gt;!</div>
+              <div class="info-box-text">
+                Use <code>&lt;br&gt;</code> apenas para quebras de linha dentro de um mesmo contexto (como endereços ou poemas). Para separar conteúdos diferentes, use <code>&lt;p&gt;</code>. Nunca use vários <code>&lt;br&gt;</code> seguidos para criar espaço — isso é trabalho do CSS!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Linha Horizontal -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(59,130,246,0.1);">➖</span>
+            Linha Horizontal: &lt;hr&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>A tag <code>&lt;hr&gt;</code> (de <em>horizontal rule</em>, régua horizontal) cria uma <strong>linha horizontal</strong> que separa seções de conteúdo. É uma tag auto-fechada, assim como o <code>&lt;br&gt;</code>.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Exemplo de linha horizontal</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;h2&gt;</span><span class="code-text">Introdução</span><span class="code-tag">&lt;/h2&gt;</span>
+<span class="code-tag">&lt;p&gt;</span><span class="code-text">Texto da introdução...</span><span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-tag">&lt;hr&gt;</span>
+
+<span class="code-tag">&lt;h2&gt;</span><span class="code-text">Desenvolvimento</span><span class="code-tag">&lt;/h2&gt;</span>
+<span class="code-tag">&lt;p&gt;</span><span class="code-text">Texto do desenvolvimento...</span><span class="code-tag">&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header">
+              <span>👁️ Resultado</span>
+            </div>
+            <div class="preview-box-body">
+              <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Introdução</h2>
+              <p style="margin-bottom: var(--space-4); color: var(--text-secondary);">Texto da introdução...</p>
+              <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--space-4) 0;">
+              <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Desenvolvimento</h2>
+              <p style="color: var(--text-secondary);">Texto do desenvolvimento...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Ênfase -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(245,158,11,0.1);">💪</span>
+            Ênfase no Texto: &lt;strong&gt; e &lt;em&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>Para dar ênfase ao texto, usamos as tags <code>&lt;strong&gt;</code> (negrito, importância forte) e <code>&lt;em&gt;</code> (itálico, ênfase).</p>
+
+            <p>Essas tags são <strong>semânticas</strong> — elas não apenas mudam a aparência, mas também dizem ao navegador e aos leitores de tela que aquele trecho tem importância especial.</p>
+          </div>
+
+          <table class="tags-table">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Significado</th>
+                <th>Aparência padrão</th>
+                <th>Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&lt;strong&gt;</code></td>
+                <td>Importância forte</td>
+                <td><strong>Negrito</strong></td>
+                <td>Alertas, avisos, palavras-chave</td>
+              </tr>
+              <tr>
+                <td><code>&lt;em&gt;</code></td>
+                <td>Ênfase</td>
+                <td><em>Itálico</em></td>
+                <td>Destaque em frases, termos estrangeiros</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Exemplo de ênfase</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;p&gt;</span><span class="code-text">O HTML é </span><span class="code-tag">&lt;strong&gt;</span><span class="code-text">muito importante</span><span class="code-tag">&lt;/strong&gt;</span><span class="code-text"> para a web.</span><span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-tag">&lt;p&gt;</span><span class="code-text">A palavra </span><span class="code-tag">&lt;em&gt;</span><span class="code-text">código</span><span class="code-tag">&lt;/em&gt;</span><span class="code-text"> vem do latim </span><span class="code-tag">&lt;em&gt;</span><span class="code-text">codex</span><span class="code-tag">&lt;/em&gt;</span><span class="code-text">.</span><span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-tag">&lt;p&gt;</span><span class="code-text">Você </span><span class="code-tag">&lt;strong&gt;</span><span class="code-text">deve</span><span class="code-tag">&lt;/strong&gt;</span><span class="code-text"> sempre usar </span><span class="code-tag">&lt;em&gt;</span><span class="code-text">tags semânticas</span><span class="code-tag">&lt;/em&gt;</span><span class="code-text">.</span><span class="code-tag">&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header">
+              <span>👁️ Resultado</span>
+            </div>
+            <div class="preview-box-body">
+              <p style="margin-bottom: var(--space-3); color: var(--text-primary);">O HTML é <strong>muito importante</strong> para a web.</p>
+              <p style="margin-bottom: var(--space-3); color: var(--text-primary);">A palavra <em>código</em> vem do latim <em>codex</em>.</p>
+              <p style="color: var(--text-primary);">Você <strong>deve</strong> sempre usar <em>tags semânticas</em>.</p>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">💡</span>
+            <div class="info-box-content">
+              <div class="info-box-title">&lt;b&gt; e &lt;i&gt; vs &lt;strong&gt; e &lt;em&gt;</div>
+              <div class="info-box-text">
+                Existem também as tags <code>&lt;b&gt;</code> (bold) e <code>&lt;i&gt;</code> (italic), que apenas mudam a aparência sem significado semântico. <strong>Prefira sempre</strong> <code>&lt;strong&gt;</code> e <code>&lt;em&gt;</code> — elas são mais acessíveis e melhores para SEO.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Resumo -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(99,102,241,0.1);">📋</span>
+            Resumo das Tags
+          </h2>
+
+          <table class="tags-table">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Função</th>
+                <th>Tag de fechamento?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>&lt;h1&gt; a &lt;h6&gt;</code></td><td>Títulos hierárquicos</td><td>✅ Sim</td></tr>
+              <tr><td><code>&lt;p&gt;</code></td><td>Parágrafo</td><td>✅ Sim</td></tr>
+              <tr><td><code>&lt;br&gt;</code></td><td>Quebra de linha</td><td>❌ Não (auto-fechada)</td></tr>
+              <tr><td><code>&lt;hr&gt;</code></td><td>Linha horizontal</td><td>❌ Não (auto-fechada)</td></tr>
+              <tr><td><code>&lt;strong&gt;</code></td><td>Importância forte (negrito)</td><td>✅ Sim</td></tr>
+              <tr><td><code>&lt;em&gt;</code></td><td>Ênfase (itálico)</td><td>✅ Sim</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Exercise Section -->
+        <div class="exercise-section">
+          <div class="exercise-badge">🎯 Exercício Prático</div>
+          <h2 class="exercise-title">Crie uma Página Sobre Você</h2>
+          <p class="exercise-desc">
+            Use tudo o que aprendeu neste módulo para criar uma página pessoal simples.
+          </p>
+
+          <div class="exercise-task">
+            <div class="exercise-task-title">📋 Instruções:</div>
+            <ul class="exercise-task-list">
+              <li>Crie um arquivo chamado <code>sobre-mim.html</code></li>
+              <li>Use a estrutura completa do módulo anterior (&lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;)</li>
+              <li>Adicione um <code>&lt;h1&gt;</code> com seu nome</li>
+              <li>Adicione um <code>&lt;h2&gt;</code> "Sobre mim" e um parágrafo contando quem você é</li>
+              <li>Adicione um <code>&lt;h2&gt;</code> "Meus hobbies" e liste pelo menos 3 hobbies em parágrafos</li>
+              <li>Use <code>&lt;strong&gt;</code> para destacar palavras importantes</li>
+              <li>Use <code>&lt;em&gt;</code> para dar ênfase em algum trecho</li>
+              <li>Use <code>&lt;hr&gt;</code> para separar as seções</li>
+              <li>Adicione um <code>&lt;h2&gt;</code> "Contato" com seu email usando quebras de linha (&lt;br&gt;)</li>
+            </ul>
+          </div>
+
+          <div class="preview-box" style="margin-bottom: 0;">
+            <div class="preview-box-header">
+              <span>👁️ Exemplo de resultado esperado</span>
+            </div>
+            <div class="preview-box-body">
+              <h1 style="font-size: var(--text-3xl); font-weight: 800; margin-bottom: var(--space-3); color: var(--text-primary);">Maria Silva</h1>
+              <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--space-4) 0;">
+              <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Sobre mim</h2>
+              <p style="margin-bottom: var(--space-4); color: var(--text-secondary);">Olá! Meu nome é <strong>Maria</strong> e estou aprendendo <em>HTML</em> do zero. Sou apaixonada por tecnologia!</p>
+              <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--space-4) 0;">
+              <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Meus hobbies</h2>
+              <p style="margin-bottom: var(--space-2); color: var(--text-secondary);">Gosto de ler livros de ficção científica.</p>
+              <p style="margin-bottom: var(--space-2); color: var(--text-secondary);">Adoro cozinhar pratos novos.</p>
+              <p style="margin-bottom: var(--space-4); color: var(--text-secondary);">Pratico corrida todos os sábados.</p>
+              <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--space-4) 0;">
+              <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">Contato</h2>
+              <p style="color: var(--text-secondary);">Email: maria@email.com<br>Telefone: (11) 99999-9999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="module-nav">
+          <a href="../02-estrutura-basica/index.html" class="module-nav-btn module-nav-btn-prev">
             <span>←</span>
-            <span>Voltar ao Início</span>
+            <span>Anterior</span>
+          </a>
+
+          <button class="module-nav-btn module-nav-btn-complete" id="btnComplete" data-module="3">
+            <span>✓</span>
+            <span>Marcar como Concluído</span>
+          </button>
+
+          <a href="../04-links-e-navegacao/index.html" class="module-nav-btn module-nav-btn-next" id="btnNext">
+            <span>Próximo Módulo</span>
+            <span>→</span>
           </a>
         </div>
 
@@ -129,13 +472,11 @@
   <script src="../../js/navigation.js"></script>
   <script src="../../js/progress.js"></script>
   <script>
-    // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
     const html = document.documentElement;
 
-    // Sync icon with current theme (already set by anti-flash script)
     updateThemeIcon(html.getAttribute('data-theme'));
 
     themeToggle.addEventListener('click', () => {
@@ -155,6 +496,44 @@
         moonIcon.style.display = 'block';
       }
     }
+
+    const btnComplete = document.getElementById('btnComplete');
+    const btnNext = document.getElementById('btnNext');
+    const moduleId = parseInt(btnComplete.dataset.module);
+
+    if (ProgressTracker.isCompleted(moduleId)) {
+      btnComplete.classList.add('completed');
+      btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+    }
+
+    btnComplete.addEventListener('click', () => {
+      if (!ProgressTracker.isCompleted(moduleId)) {
+        ProgressTracker.markComplete(moduleId);
+        btnComplete.classList.add('completed');
+        btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+        btnComplete.style.transform = 'scale(1.05)';
+        setTimeout(() => { btnComplete.style.transform = ''; }, 200);
+      }
+    });
+
+    function updateNextButton() {
+      if (ProgressTracker.isCompleted(moduleId)) {
+        btnNext.classList.remove('disabled');
+        btnNext.style.opacity = '1';
+        btnNext.style.pointerEvents = 'auto';
+      } else {
+        btnNext.classList.add('disabled');
+        btnNext.style.opacity = '0.5';
+        btnNext.style.pointerEvents = 'none';
+      }
+    }
+
+    setTimeout(updateNextButton, 100);
+    const originalUpdateUI = ProgressTracker.updateUI;
+    ProgressTracker.updateUI = function() {
+      originalUpdateUI.call(this);
+      updateNextButton();
+    };
   </script>
 </body>
 </html>

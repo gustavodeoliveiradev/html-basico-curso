@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estrutura Básica — HTML Básico</title>
 
-  <!-- Anti-flash: aplica tema IMEDIATAMENTE antes de renderizar -->
   <script>
     (function() {
       const saved = localStorage.getItem('html_curso_theme');
@@ -46,7 +45,7 @@
           <span class="sidebar-link-number" style="background: var(--mod-01); color: white;">1</span>
           <span>Introdução</span>
         </a>
-        <a href="../02-estrutura-basica/index.html" class="sidebar-link" data-module-id="2">
+        <a href="../02-estrutura-basica/index.html" class="sidebar-link active" data-module-id="2">
           <span class="sidebar-link-number" style="background: var(--mod-02); color: white;">2</span>
           <span>Estrutura Básica</span>
         </a>
@@ -101,19 +100,382 @@
       </header>
 
       <div class="main-content">
-        <!-- Conteúdo do módulo será inserido aqui -->
 
-        <div class="card" style="text-align: center; padding: var(--space-16);">
-          <div style="font-size: 4rem; margin-bottom: var(--space-4);">🚧</div>
-          <h2 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
-            Módulo em Construção
-          </h2>
-          <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto var(--space-6);">
-            Este módulo ainda está sendo desenvolvido. Volte em breve para conferir o conteúdo completo!
+        <!-- Module Header -->
+        <div class="module-header">
+          <div class="module-header-top">
+            <span class="module-header-badge" style="background: var(--mod-02);">Módulo 02</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted);">⏱️ ~15 minutos</span>
+          </div>
+          <h1 class="module-header-title">Estrutura Básica</h1>
+          <p class="module-header-desc">
+            Toda página HTML segue uma estrutura padrão. Neste módulo, você vai aprender a anatomia de um documento HTML e o papel de cada elemento essencial.
           </p>
-          <a href="../../index.html" class="btn btn-primary">
+        </div>
+
+        <!-- Section: Anatomia -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(139,92,246,0.1);">🏗️</span>
+            A Anatomia de uma Página HTML
+          </h2>
+
+          <div class="content-text">
+            <p>Toda página HTML é como um sanduíche: tem camadas que se encaixam uma dentro da outra. A estrutura básica sempre segue este padrão:</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Estrutura base de todo documento HTML</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"pt-BR"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"viewport"</span> <span class="code-attr">content</span>=<span class="code-value">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span><span class="code-text">Título da Página</span><span class="code-tag">&lt;/title&gt;</span>
+  <span class="code-tag">&lt;/head&gt;</span>
+  <span class="code-tag">&lt;body&gt;</span>
+    <span class="code-comment">&lt;!-- O conteúdo visível fica aqui --&gt;</span>
+  <span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="content-text">
+            <p>Vamos entender cada parte dessa estrutura:</p>
+          </div>
+        </div>
+
+        <!-- Section: DOCTYPE -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(99,102,241,0.1);">📜</span>
+            &lt;!DOCTYPE html&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>A primeira linha de <strong>todo</strong> documento HTML deve ser a declaração do tipo de documento. Ela diz ao navegador: <em>"Ei, isso aqui é um documento HTML5!"</em></p>
+
+            <p>Sem essa linha, o navegador pode entrar em um modo de compatibilidade estranho e sua página pode não funcionar corretamente.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">✅ Correto</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html&gt;</span>
+  ...</pre>
+            </div>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-box-icon">⚠️</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Importante!</div>
+              <div class="info-box-text">
+                O <code>&lt;!DOCTYPE html&gt;</code> <strong>não é uma tag HTML</strong> — é uma declaração. Ele não tem tag de fechamento e deve ser sempre a <strong>primeira coisa</strong> no arquivo, antes mesmo da tag <code>&lt;html&gt;</code>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: <html> -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(236,72,153,0.1);">🌐</span>
+            A Tag &lt;html&gt;
+          </h2>
+
+          <div class="content-text">
+            <p>A tag <code>&lt;html&gt;</code> é o <strong>elemento raiz</strong> de toda a página. É como a casca do ovo — tudo fica dentro dela. Todo o conteúdo HTML deve estar entre <code>&lt;html&gt;</code> e <code>&lt;/html&gt;</code>.</p>
+
+            <p>O atributo <code>lang</code> (de <em>language</em>, idioma) é muito importante. Ele diz ao navegador qual é o idioma principal da página:</p>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag-item">lang="pt-BR"</span>
+            <span style="color: var(--text-muted); font-size: var(--text-sm);">← Português do Brasil</span>
+          </div>
+
+          <div class="content-text">
+            <p>Outros exemplos comuns:</p>
+          </div>
+
+          <table class="tags-table">
+            <thead>
+              <tr>
+                <th>Valor</th>
+                <th>Idioma</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>pt-BR</code></td><td>Português (Brasil)</td></tr>
+              <tr><td><code>pt</code></td><td>Português (geral)</td></tr>
+              <tr><td><code>en</code></td><td>Inglês</td></tr>
+              <tr><td><code>en-US</code></td><td>Inglês (EUA)</td></tr>
+              <tr><td><code>es</code></td><td>Espanhol</td></tr>
+            </tbody>
+          </table>
+
+          <div class="info-box">
+            <span class="info-box-icon">♿</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Acessibilidade</div>
+              <div class="info-box-text">
+                O atributo <code>lang</code> ajuda leitores de tela (usados por pessoas com deficiência visual) a pronunciarem o conteúdo corretamente. Sempre inclua esse atributo!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: <head> -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(244,63,94,0.1);">🧠</span>
+            A Tag &lt;head&gt; — O "Cérebro" da Página
+          </h2>
+
+          <div class="content-text">
+            <p>A tag <code>&lt;head&gt;</code> contém informações <strong>sobre</strong> a página. O conteúdo do <code>&lt;head&gt;</code> <strong>não aparece na tela</strong> para o usuário, mas é essencial para o funcionamento correto da página.</p>
+
+            <p>Dentro do <code>&lt;head&gt;</code>, os elementos mais comuns são:</p>
+          </div>
+
+          <table class="tags-table">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Função</th>
+                <th>Obrigatório?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&lt;title&gt;</code></td>
+                <td>Título da aba do navegador</td>
+                <td>✅ Sim</td>
+              </tr>
+              <tr>
+                <td><code>&lt;meta charset&gt;</code></td>
+                <td>Codificação de caracteres (UTF-8)</td>
+                <td>✅ Sim</td>
+              </tr>
+              <tr>
+                <td><code>&lt;meta viewport&gt;</code></td>
+                <td>Configuração para mobile</td>
+                <td>✅ Sim</td>
+              </tr>
+              <tr>
+                <td><code>&lt;meta name="description"&gt;</code></td>
+                <td>Descrição para Google</td>
+                <td>❌ Não</td>
+              </tr>
+              <tr>
+                <td><code>&lt;link rel="stylesheet"&gt;</code></td>
+                <td>Link para arquivo CSS</td>
+                <td>❌ Não</td>
+              </tr>
+              <tr>
+                <td><code>&lt;link rel="icon"&gt;</code></td>
+                <td>Ícone da aba (favicon)</td>
+                <td>❌ Não</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Exemplo completo do &lt;head&gt;</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;head&gt;</span>
+  <span class="code-comment">&lt;!-- Codificação de caracteres --&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Configuração para mobile --&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"viewport"</span> 
+        <span class="code-attr">content</span>=<span class="code-value">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Título da aba --&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span><span class="code-text">Minha Página Incrível</span><span class="code-tag">&lt;/title&gt;</span>
+
+  <span class="code-comment">&lt;!-- Descrição para o Google --&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"description"</span> 
+        <span class="code-attr">content</span>=<span class="code-value">"Uma página sobre aprender HTML"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Link para CSS externo --&gt;</span>
+  <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-value">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-value">"estilo.css"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">💡</span>
+            <div class="info-box-content">
+              <div class="info-box-title">UTF-8 é essencial!</div>
+              <div class="info-box-text">
+                O <code>charset="UTF-8"</code> garante que caracteres especiais como ç, ã, é, emojis e símbolos sejam exibidos corretamente. <strong>Sempre</strong> inclua essa meta tag!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: <body> -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(16,185,129,0.1);">👁️</span>
+            A Tag &lt;body&gt; — O Corpo Visível
+          </h2>
+
+          <div class="content-text">
+            <p>A tag <code>&lt;body&gt;</code> é onde fica <strong>tudo que o usuário vê</strong> na tela: textos, imagens, links, botões, vídeos... Se está na tela, está no <code>&lt;body&gt;</code>.</p>
+
+            <p>Todo o conteúdo visível da página deve estar entre <code>&lt;body&gt;</code> e <code>&lt;/body&gt;</code>.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Conteúdo visível dentro do &lt;body&gt;</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;body&gt;</span>
+  <span class="code-tag">&lt;h1&gt;</span><span class="code-text">Bem-vindo!</span><span class="code-tag">&lt;/h1&gt;</span>
+  <span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é um parágrafo visível.</span><span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-value">"foto.jpg"</span> <span class="code-attr">alt</span>=<span class="code-value">"Minha foto"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Comentários -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(6,182,212,0.1);">💬</span>
+            Comentários
+          </h2>
+
+          <div class="content-text">
+            <p>Comentários são trechos de código que o navegador <strong>ignora</strong>. Eles servem para você deixar anotações, explicar o código ou temporariamente desativar uma parte do HTML.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">💬 Exemplos de comentários</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-comment">&lt;!-- Isso é um comentário de uma linha --&gt;</span>
+
+<span class="code-comment">&lt;!--
+  Isso é um comentário
+  de várias linhas.
+  Útil para explicações longas!
+--&gt;</span>
+
+<span class="code-tag">&lt;h1&gt;</span><span class="code-text">Título visível</span><span class="code-tag">&lt;/h1&gt;</span>
+<span class="code-comment">&lt;!-- &lt;p&gt;Este parágrafo está comentado&lt;/p&gt; --&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">🎯</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Boa prática</div>
+              <div class="info-box-text">
+                Use comentários para organizar seu código em seções. Por exemplo: <code>&lt;!-- HEADER --&gt;</code>, <code>&lt;!-- MAIN CONTENT --&gt;</code>, <code>&lt;!-- FOOTER --&gt;</code>. Isso ajuda muito na hora de encontrar coisas!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Resumo Visual -->
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(59,130,246,0.1);">🗺️</span>
+            Mapa Visual da Estrutura
+          </h2>
+
+          <div class="diagram-box" style="text-align: left;">
+            <div style="font-family: var(--font-mono); font-size: var(--text-sm); line-height: 2;">
+              <div style="padding: var(--space-3) var(--space-4); background: rgba(99,102,241,0.1); border-radius: 8px; border-left: 3px solid var(--color-primary);">
+                <strong style="color: var(--color-primary);">&lt;!DOCTYPE html&gt;</strong> — Declara o tipo de documento
+              </div>
+              <div style="margin-left: var(--space-4); margin-top: var(--space-2);">
+                <div style="padding: var(--space-3) var(--space-4); background: rgba(139,92,246,0.1); border-radius: 8px; border-left: 3px solid var(--mod-02);">
+                  <strong style="color: var(--mod-02);">&lt;html&gt;</strong> — Elemento raiz (tudo fica aqui dentro)
+                </div>
+                <div style="margin-left: var(--space-6); margin-top: var(--space-2);">
+                  <div style="padding: var(--space-3) var(--space-4); background: rgba(236,72,153,0.1); border-radius: 8px; border-left: 3px solid var(--mod-03); margin-bottom: var(--space-2);">
+                    <strong style="color: var(--mod-03);">&lt;head&gt;</strong> — Informações sobre a página (não visíveis)
+                  </div>
+                  <div style="padding: var(--space-3) var(--space-4); background: rgba(16,185,129,0.1); border-radius: 8px; border-left: 3px solid var(--mod-06);">
+                    <strong style="color: var(--mod-06);">&lt;body&gt;</strong> — Conteúdo visível da página
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exercise Section -->
+        <div class="exercise-section">
+          <div class="exercise-badge">🎯 Exercício Prático</div>
+          <h2 class="exercise-title">Monte a Estrutura Completa</h2>
+          <p class="exercise-desc">
+            Agora é sua vez de praticar! Crie uma página HTML completa seguindo as instruções abaixo.
+          </p>
+
+          <div class="exercise-task">
+            <div class="exercise-task-title">📋 Instruções:</div>
+            <ul class="exercise-task-list">
+              <li>Crie um arquivo chamado <code>estrutura.html</code></li>
+              <li>Adicione o <code>&lt;!DOCTYPE html&gt;</code></li>
+              <li>Crie a tag <code>&lt;html&gt;</code> com <code>lang="pt-BR"</code></li>
+              <li>No <code>&lt;head&gt;</code>, adicione: charset UTF-8, viewport e um título</li>
+              <li>No <code>&lt;body&gt;</code>, adicione um título <code>&lt;h1&gt;</code> e um parágrafo <code>&lt;p&gt;</code></li>
+              <li>Adicione pelo menos 2 comentários explicativos</li>
+              <li>Salve e abra no navegador para ver o resultado</li>
+            </ul>
+          </div>
+
+          <div class="code-example" style="margin-bottom: 0;">
+            <div class="code-example-header">
+              <span class="code-example-title">💡 Dica: estrutura esperada</span>
+            </div>
+            <div class="code-example-body">
+              <pre><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"pt-BR"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"viewport"</span> <span class="code-attr">content</span>=<span class="code-value">"..."</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span><span class="code-text">Sua página</span><span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+  <span class="code-comment">&lt;!-- Seu conteúdo aqui --&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="module-nav">
+          <a href="../01-introducao/index.html" class="module-nav-btn module-nav-btn-prev">
             <span>←</span>
-            <span>Voltar ao Início</span>
+            <span>Anterior</span>
+          </a>
+
+          <button class="module-nav-btn module-nav-btn-complete" id="btnComplete" data-module="2">
+            <span>✓</span>
+            <span>Marcar como Concluído</span>
+          </button>
+
+          <a href="../03-textos-e-titulos/index.html" class="module-nav-btn module-nav-btn-next" id="btnNext">
+            <span>Próximo Módulo</span>
+            <span>→</span>
           </a>
         </div>
 
@@ -129,13 +491,11 @@
   <script src="../../js/navigation.js"></script>
   <script src="../../js/progress.js"></script>
   <script>
-    // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
     const html = document.documentElement;
 
-    // Sync icon with current theme (already set by anti-flash script)
     updateThemeIcon(html.getAttribute('data-theme'));
 
     themeToggle.addEventListener('click', () => {
@@ -155,6 +515,44 @@
         moonIcon.style.display = 'block';
       }
     }
+
+    const btnComplete = document.getElementById('btnComplete');
+    const btnNext = document.getElementById('btnNext');
+    const moduleId = parseInt(btnComplete.dataset.module);
+
+    if (ProgressTracker.isCompleted(moduleId)) {
+      btnComplete.classList.add('completed');
+      btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+    }
+
+    btnComplete.addEventListener('click', () => {
+      if (!ProgressTracker.isCompleted(moduleId)) {
+        ProgressTracker.markComplete(moduleId);
+        btnComplete.classList.add('completed');
+        btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+        btnComplete.style.transform = 'scale(1.05)';
+        setTimeout(() => { btnComplete.style.transform = ''; }, 200);
+      }
+    });
+
+    function updateNextButton() {
+      if (ProgressTracker.isCompleted(moduleId)) {
+        btnNext.classList.remove('disabled');
+        btnNext.style.opacity = '1';
+        btnNext.style.pointerEvents = 'auto';
+      } else {
+        btnNext.classList.add('disabled');
+        btnNext.style.opacity = '0.5';
+        btnNext.style.pointerEvents = 'none';
+      }
+    }
+
+    setTimeout(updateNextButton, 100);
+    const originalUpdateUI = ProgressTracker.updateUI;
+    ProgressTracker.updateUI = function() {
+      originalUpdateUI.call(this);
+      updateNextButton();
+    };
   </script>
 </body>
 </html>
