@@ -97,7 +97,7 @@ const ProgressTracker = {
       }
     });
 
-    // Update sidebar links
+    // Update sidebar links — sidebar nunca mostra cadeado, apenas progresso
     document.querySelectorAll('.sidebar-link[data-module-id]').forEach(link => {
       const moduleId = parseInt(link.dataset.moduleId);
       const numberEl = link.querySelector('.sidebar-link-number');
@@ -105,12 +105,9 @@ const ProgressTracker = {
       if (this.isCompleted(moduleId)) {
         numberEl.style.background = '#10b981';
         numberEl.innerHTML = '✓';
-      } else if (this.isUnlocked(moduleId)) {
+      } else {
         numberEl.style.background = 'var(--color-primary)';
         numberEl.innerHTML = moduleId;
-      } else {
-        numberEl.style.background = 'var(--text-muted)';
-        numberEl.innerHTML = '🔒';
       }
     });
   }
