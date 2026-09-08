@@ -9,45 +9,58 @@ const ProgressTracker = {
   init() {
     this.load();
     this.updateUI();
+    console.log('[ProgressTracker] Inicializado. Concluídos:', this.data.completed);
   },
 
   load() {
-    const stored = localStorage.getItem(this.STORAGE_KEY);
-    this.data = stored ? JSON.parse(stored) : { completed: [], current: null };
+    try {
+      const stored = localStorage.getItem(this.STORAGE_KEY);
+      this.data = stored ? JSON.parse(stored) : { completed: [], current: null };
+    } catch (e) {
+      this.data = { completed: [], current: null };
+    }
   },
 
   save() {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.data));
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.data));
+    } catch (e) {
+      console.warn('[ProgressTracker] Não foi possível salvar no localStorage');
+    }
   },
 
   markComplete(moduleId) {
+    moduleId = parseInt(moduleId);
     if (!this.data.completed.includes(moduleId)) {
       this.data.completed.push(moduleId);
       this.save();
       this.updateUI();
+      console.log('[ProgressTracker] Módulo', moduleId, 'concluído!');
+      return true;
     }
+    return false;
   },
 
   markIncomplete(moduleId) {
+    moduleId = parseInt(moduleId);
     this.data.completed = this.data.completed.filter(id => id !== moduleId);
     this.save();
     this.updateUI();
+    console.log('[ProgressTracker] Módulo', moduleId, 'desmarcado.');
   },
 
   setCurrent(moduleId) {
     this.data.current = moduleId;
     this.save();
-    this.updateUI();
   },
 
   isCompleted(moduleId) {
-    return this.data.completed.includes(moduleId);
+    return this.data.completed.includes(parseInt(moduleId));
   },
 
   isUnlocked(moduleId) {
-    // Module 1 is always unlocked
+    moduleId = parseInt(moduleId);
     if (moduleId === 1) return true;
-    // Others unlock when previous is completed
     return this.isCompleted(moduleId - 1);
   },
 
@@ -71,36 +84,34 @@ const ProgressTracker = {
       progressCount.textContent = `${this.data.completed.length}/${this.TOTAL_MODULES}`;
     }
 
-    // Update module cards
+    // Update module cards on hub
     document.querySelectorAll('[data-module-id]').forEach(card => {
       const moduleId = parseInt(card.dataset.moduleId);
       const statusEl = card.querySelector('.module-status');
 
+      if (!statusEl) return;
+
       if (this.isCompleted(moduleId)) {
         card.classList.remove('module-card-locked');
-        if (statusEl) {
-          statusEl.className = 'module-status status-completed';
-          statusEl.innerHTML = '✓ Concluído';
-        }
+        statusEl.className = 'module-status status-completed';
+        statusEl.innerHTML = '✓ Concluído';
       } else if (this.isUnlocked(moduleId)) {
         card.classList.remove('module-card-locked');
-        if (statusEl) {
-          statusEl.className = 'module-status status-progress';
-          statusEl.innerHTML = '▶ Disponível';
-        }
+        statusEl.className = 'module-status status-progress';
+        statusEl.innerHTML = '▶ Disponível';
       } else {
         card.classList.add('module-card-locked');
-        if (statusEl) {
-          statusEl.className = 'module-status status-locked';
-          statusEl.innerHTML = '🔒 Bloqueado';
-        }
+        statusEl.className = 'module-status status-locked';
+        statusEl.innerHTML = '🔒 Bloqueado';
       }
     });
 
-    // Update sidebar links — sidebar nunca mostra cadeado, apenas progresso
+    // Update sidebar links — nunca mostra cadeado
     document.querySelectorAll('.sidebar-link[data-module-id]').forEach(link => {
       const moduleId = parseInt(link.dataset.moduleId);
       const numberEl = link.querySelector('.sidebar-link-number');
+
+      if (!numberEl) return;
 
       if (this.isCompleted(moduleId)) {
         numberEl.style.background = '#10b981';
@@ -113,22 +124,5 @@ const ProgressTracker = {
   }
 };
 
-// Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
-  ProgressTracker.init();
-});
-
-// Demo: allow clicking cards to toggle completion (for testing)
-document.addEventListener('click', (e) => {
-  const card = e.target.closest('.module-card');
-  if (card && !card.classList.contains('module-card-locked')) {
-    const moduleId = parseInt(card.dataset.moduleId);
-    if (moduleId) {
-      if (ProgressTracker.isCompleted(moduleId)) {
-        ProgressTracker.markIncomplete(moduleId);
-      } else {
-        ProgressTracker.markComplete(moduleId);
-      }
-    }
-  }
-});
+// Initialize immediately when script loads
+ProgressTracker.init();
