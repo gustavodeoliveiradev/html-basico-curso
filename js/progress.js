@@ -9,7 +9,6 @@ const ProgressTracker = {
   init() {
     this.load();
     this.updateUI();
-    console.log('[ProgressTracker] Inicializado. Concluídos:', this.data.completed);
   },
 
   load() {
@@ -35,7 +34,6 @@ const ProgressTracker = {
       this.data.completed.push(moduleId);
       this.save();
       this.updateUI();
-      console.log('[ProgressTracker] Módulo', moduleId, 'concluído!');
       return true;
     }
     return false;
@@ -46,7 +44,6 @@ const ProgressTracker = {
     this.data.completed = this.data.completed.filter(id => id !== moduleId);
     this.save();
     this.updateUI();
-    console.log('[ProgressTracker] Módulo', moduleId, 'desmarcado.');
   },
 
   setCurrent(moduleId) {
@@ -68,21 +65,39 @@ const ProgressTracker = {
     return Math.round((this.data.completed.length / this.TOTAL_MODULES) * 100);
   },
 
-  updateUI() {
-    // Update global progress bar
-    const progressFill = document.querySelector('.progress-bar-fill');
-    const progressText = document.querySelector('.progress-percent');
-    const progressCount = document.querySelector('.progress-count');
+  reset() {
+    this.data = { completed: [], current: null };
+    this.save();
+    this.updateUI();
+    // Also reset all exercise checkboxes
+    for (let i = 1; i <= 9; i++) {
+      localStorage.removeItem('html_curso_exercises_module_' + i);
+    }
+  },
 
-    if (progressFill) {
-      progressFill.style.width = `${this.getProgressPercent()}%`;
-    }
-    if (progressText) {
-      progressText.textContent = `${this.getProgressPercent()}%`;
-    }
-    if (progressCount) {
-      progressCount.textContent = `${this.data.completed.length}/${this.TOTAL_MODULES}`;
-    }
+  updateUI() {
+    const percent = this.getProgressPercent();
+    const completedCount = this.data.completed.length;
+
+    // Update ALL progress bars (querySelectorAll)
+    document.querySelectorAll('.progress-bar-fill').forEach(el => {
+      el.style.width = `${percent}%`;
+    });
+
+    // Update ALL progress percentages
+    document.querySelectorAll('.progress-percent').forEach(el => {
+      el.textContent = `${percent}%`;
+    });
+
+    // Update ALL progress counts
+    document.querySelectorAll('.progress-count').forEach(el => {
+      // Check if it's the "X/9 módulos" text or just "X/9"
+      if (el.textContent.includes('módulos')) {
+        el.textContent = `${completedCount}/9 módulos`;
+      } else {
+        el.textContent = `${completedCount}/9`;
+      }
+    });
 
     // Update module cards on hub
     document.querySelectorAll('[data-module-id]').forEach(card => {

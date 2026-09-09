@@ -83,6 +83,11 @@
         </a>
       </nav>
 
+        <div class="sidebar-section-title" style="margin-top: var(--space-4);">Progresso</div>
+        <button class="sidebar-link" id="btnResetProgress" style="color: #ef4444; width: 100%; text-align: left;">
+          <span class="sidebar-link-number" style="background: #ef4444; color: white;">🔄</span>
+          <span>Resetar Progresso</span>
+        </button>
       <div class="sidebar-footer">
         <span style="font-size: var(--text-xs); color: var(--text-muted);">v1.0.0</span>
         <span style="font-size: var(--text-xs); color: var(--text-muted);">🚀</span>
@@ -173,6 +178,7 @@
               <div style="text-align: right;">
                 <div class="progress-percent" style="font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary);">0%</div>
                 <div class="progress-count" style="font-size: var(--text-sm); color: var(--text-muted); font-weight: 500;">0/9 módulos</div>
+                <button id="btnResetHub" style="margin-top: var(--space-2); padding: var(--space-1) var(--space-3); background: transparent; border: 1px solid #ef4444; color: #ef4444; border-radius: 8px; font-size: var(--text-xs); font-weight: 600; cursor: pointer; transition: all var(--transition-fast);" onmouseover="this.style.background='#ef4444'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='#ef4444';">🔄 Resetar</button>
               </div>
             </div>
             <div class="progress-bar-bg">

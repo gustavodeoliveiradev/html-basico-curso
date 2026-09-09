@@ -19,6 +19,47 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/theme.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+
+  <style>
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; background: var(--bg-card);
+      border: 1px solid var(--border-color); border-radius: 8px;
+      font-size: var(--text-xs); font-weight: 600;
+      color: var(--text-secondary); cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-family);
+    }
+    .copy-btn:hover {
+      background: var(--bg-hover); border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .copy-btn.copied {
+      background: #d1fae5; border-color: #10b981; color: #065f46;
+    }
+    [data-theme="dark"] .copy-btn.copied {
+      background: rgba(16, 185, 129, 0.2); color: #34d399;
+    }
+    .exercise-checklist {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .exercise-checklist li {
+      padding: var(--space-2) 0;
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      color: var(--text-secondary); font-size: var(--text-sm);
+      cursor: pointer; transition: all var(--transition-fast);
+      border-radius: 8px; padding: var(--space-2) var(--space-3);
+    }
+    .exercise-checklist li:hover { background: var(--bg-hover); }
+    .exercise-checklist input[type="checkbox"] {
+      width: 18px; height: 18px; min-width: 18px; margin-top: 2px;
+      accent-color: var(--color-primary); cursor: pointer;
+    }
+    .exercise-checklist li.checked {
+      text-decoration: line-through; opacity: 0.6;
+    }
+    .exercise-checklist li.checked:hover { opacity: 0.8; }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -77,6 +118,12 @@
           <span class="sidebar-link-number" style="background: var(--mod-09); color: white;">9</span>
           <span>Semântica HTML5</span>
         </a>
+
+        <div class="sidebar-section-title" style="margin-top: var(--space-4);">Progresso</div>
+        <button class="sidebar-link" id="btnResetProgress" style="color: #ef4444; width: 100%; text-align: left;">
+          <span class="sidebar-link-number" style="background: #ef4444; color: white;">🔄</span>
+          <span>Resetar Progresso</span>
+        </button>
       </nav>
 
       <div class="sidebar-footer">
@@ -101,7 +148,6 @@
 
       <div class="main-content">
 
-        <!-- Module Header -->
         <div class="module-header">
           <div class="module-header-top">
             <span class="module-header-badge" style="background: var(--mod-03);">Módulo 03</span>
@@ -113,7 +159,6 @@
           </p>
         </div>
 
-        <!-- Section: Títulos -->
         <div class="content-section">
           <h2 class="content-section-title">
             <span class="content-section-title-icon" style="background: rgba(236,72,153,0.1);">📰</span>
@@ -122,7 +167,6 @@
 
           <div class="content-text">
             <p>O HTML oferece <strong>seis níveis de títulos</strong>, do <code>&lt;h1&gt;</code> (mais importante) ao <code>&lt;h6&gt;</code> (menos importante). Eles funcionam como a hierarquia de um livro: capítulo, seção, subseção...</p>
-
             <p>Pense nos títulos como a estrutura de um documento:</p>
           </div>
 
@@ -143,8 +187,12 @@
           <div class="code-example">
             <div class="code-example-header">
               <span class="code-example-title">📄 Código dos títulos</span>
+              <button class="copy-btn" data-copy-target="code-titles" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
             </div>
-            <div class="code-example-body">
+            <div class="code-example-body" id="code-titles">
               <pre><span class="code-tag">&lt;h1&gt;</span><span class="code-text">Título Principal da Página</span><span class="code-tag">&lt;/h1&gt;</span>
 <span class="code-tag">&lt;h2&gt;</span><span class="code-text">Capítulo 1</span><span class="code-tag">&lt;/h2&gt;</span>
 <span class="code-tag">&lt;h3&gt;</span><span class="code-text">Seção 1.1</span><span class="code-tag">&lt;/h3&gt;</span>
@@ -175,7 +223,6 @@
           </div>
         </div>
 
-        <!-- Section: Parágrafos -->
         <div class="content-section">
           <h2 class="content-section-title">
             <span class="content-section-title-icon" style="background: rgba(16,185,129,0.1);">📝</span>
@@ -189,8 +236,12 @@
           <div class="code-example">
             <div class="code-example-header">
               <span class="code-example-title">📄 Exemplo de parágrafos</span>
+              <button class="copy-btn" data-copy-target="code-paragraphs" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
             </div>
-            <div class="code-example-body">
+            <div class="code-example-body" id="code-paragraphs">
               <pre><span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é o primeiro parágrafo.</span><span class="code-tag">&lt;/p&gt;</span>
 <span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é o segundo parágrafo. Note que há um espaço entre eles.</span><span class="code-tag">&lt;/p&gt;</span>
 <span class="code-tag">&lt;p&gt;</span><span class="code-text">Este é o terceiro parágrafo. Cada tag &lt;p&gt; cria um bloco separado.</span><span class="code-tag">&lt;/p&gt;</span></pre>
@@ -209,7 +260,6 @@
           </div>
         </div>
 
-        <!-- Section: Quebra de Linha -->
         <div class="content-section">
           <h2 class="content-section-title">
             <span class="content-section-title-icon" style="background: rgba(6,182,212,0.1);">↩️</span>
@@ -218,15 +268,18 @@
 
           <div class="content-text">
             <p>A tag <code>&lt;br&gt;</code> (de <em>break</em>, quebra) cria uma <strong>quebra de linha</strong> dentro de um texto. Diferente do <code>&lt;p&gt;</code> que cria um novo parágrafo, o <code>&lt;br&gt;</code> apenas pula uma linha.</p>
-
             <p>⚠️ <strong>Atenção:</strong> <code>&lt;br&gt;</code> é uma tag <strong>auto-fechada</strong> — ela não tem tag de fechamento!</p>
           </div>
 
           <div class="code-example">
             <div class="code-example-header">
               <span class="code-example-title">📄 Exemplo de quebra de linha</span>
+              <button class="copy-btn" data-copy-target="code-br" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
             </div>
-            <div class="code-example-body">
+            <div class="code-example-body" id="code-br">
               <pre><span class="code-tag">&lt;p&gt;</span><span class="code-text">Rua das Flores, 123</span><span class="code-tag">&lt;br&gt;</span>
 <span class="code-text">Bairro Centro</span><span class="code-tag">&lt;br&gt;</span>
 <span class="code-text">São Paulo - SP</span><span class="code-tag">&lt;br&gt;</span>
@@ -259,7 +312,6 @@
           </div>
         </div>
 
-        <!-- Section: Linha Horizontal -->
         <div class="content-section">
           <h2 class="content-section-title">
             <span class="content-section-title-icon" style="background: rgba(59,130,246,0.1);">➖</span>
@@ -273,8 +325,12 @@
           <div class="code-example">
             <div class="code-example-header">
               <span class="code-example-title">📄 Exemplo de linha horizontal</span>
+              <button class="copy-btn" data-copy-target="code-hr" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
             </div>
-            <div class="code-example-body">
+            <div class="code-example-body" id="code-hr">
               <pre><span class="code-tag">&lt;h2&gt;</span><span class="code-text">Introdução</span><span class="code-tag">&lt;/h2&gt;</span>
 <span class="code-tag">&lt;p&gt;</span><span class="code-text">Texto da introdução...</span><span class="code-tag">&lt;/p&gt;</span>
 
@@ -299,7 +355,6 @@
           </div>
         </div>
 
-        <!-- Section: Ênfase -->
         <div class="content-section">
           <h2 class="content-section-title">
             <span class="content-section-title-icon" style="background: rgba(245,158,11,0.1);">💪</span>
@@ -308,40 +363,28 @@
 
           <div class="content-text">
             <p>Para dar ênfase ao texto, usamos as tags <code>&lt;strong&gt;</code> (negrito, importância forte) e <code>&lt;em&gt;</code> (itálico, ênfase).</p>
-
             <p>Essas tags são <strong>semânticas</strong> — elas não apenas mudam a aparência, mas também dizem ao navegador e aos leitores de tela que aquele trecho tem importância especial.</p>
           </div>
 
           <table class="tags-table">
             <thead>
-              <tr>
-                <th>Tag</th>
-                <th>Significado</th>
-                <th>Aparência padrão</th>
-                <th>Uso</th>
-              </tr>
+              <tr><th>Tag</th><th>Significado</th><th>Aparência padrão</th><th>Uso</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td><code>&lt;strong&gt;</code></td>
-                <td>Importância forte</td>
-                <td><strong>Negrito</strong></td>
-                <td>Alertas, avisos, palavras-chave</td>
-              </tr>
-              <tr>
-                <td><code>&lt;em&gt;</code></td>
-                <td>Ênfase</td>
-                <td><em>Itálico</em></td>
-                <td>Destaque em frases, termos estrangeiros</td>
-              </tr>
+              <tr><td><code>&lt;strong&gt;</code></td><td>Importância forte</td><td><strong>Negrito</strong></td><td>Alertas, avisos, palavras-chave</td></tr>
+              <tr><td><code>&lt;em&gt;</code></td><td>Ênfase</td><td><em>Itálico</em></td><td>Destaque em frases, termos estrangeiros</td></tr>
             </tbody>
           </table>
 
           <div class="code-example">
             <div class="code-example-header">
               <span class="code-example-title">📄 Exemplo de ênfase</span>
+              <button class="copy-btn" data-copy-target="code-emphasis" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
             </div>
-            <div class="code-example-body">
+            <div class="code-example-body" id="code-emphasis">
               <pre><span class="code-tag">&lt;p&gt;</span><span class="code-text">O HTML é </span><span class="code-tag">&lt;strong&gt;</span><span class="code-text">muito importante</span><span class="code-tag">&lt;/strong&gt;</span><span class="code-text"> para a web.</span><span class="code-tag">&lt;/p&gt;</span>
 
 <span class="code-tag">&lt;p&gt;</span><span class="code-text">A palavra </span><span class="code-tag">&lt;em&gt;</span><span class="code-text">código</span><span class="code-tag">&lt;/em&gt;</span><span class="code-text"> vem do latim </span><span class="code-tag">&lt;em&gt;</span><span class="code-text">codex</span><span class="code-tag">&lt;/em&gt;</span><span class="code-text">.</span><span class="code-tag">&lt;/p&gt;</span>
@@ -372,7 +415,6 @@
           </div>
         </div>
 
-        <!-- Section: Resumo -->
         <div class="content-section">
           <h2 class="content-section-title">
             <span class="content-section-title-icon" style="background: rgba(99,102,241,0.1);">📋</span>
@@ -381,11 +423,7 @@
 
           <table class="tags-table">
             <thead>
-              <tr>
-                <th>Tag</th>
-                <th>Função</th>
-                <th>Tag de fechamento?</th>
-              </tr>
+              <tr><th>Tag</th><th>Função</th><th>Tag de fechamento?</th></tr>
             </thead>
             <tbody>
               <tr><td><code>&lt;h1&gt; a &lt;h6&gt;</code></td><td>Títulos hierárquicos</td><td>✅ Sim</td></tr>
@@ -398,26 +436,25 @@
           </table>
         </div>
 
-        <!-- Exercise Section -->
         <div class="exercise-section">
           <div class="exercise-badge">🎯 Exercício Prático</div>
           <h2 class="exercise-title">Crie uma Página Sobre Você</h2>
           <p class="exercise-desc">
-            Use tudo o que aprendeu neste módulo para criar uma página pessoal simples.
+            Use tudo o que aprendeu neste módulo para criar uma página pessoal simples. Clique nos quadrados para marcar cada passo concluído.
           </p>
 
           <div class="exercise-task">
             <div class="exercise-task-title">📋 Instruções:</div>
-            <ul class="exercise-task-list">
-              <li>Crie um arquivo chamado <code>sobre-mim.html</code></li>
-              <li>Use a estrutura completa do módulo anterior (&lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;)</li>
-              <li>Adicione um <code>&lt;h1&gt;</code> com seu nome</li>
-              <li>Adicione um <code>&lt;h2&gt;</code> "Sobre mim" e um parágrafo contando quem você é</li>
-              <li>Adicione um <code>&lt;h2&gt;</code> "Meus hobbies" e liste pelo menos 3 hobbies em parágrafos</li>
-              <li>Use <code>&lt;strong&gt;</code> para destacar palavras importantes</li>
-              <li>Use <code>&lt;em&gt;</code> para dar ênfase em algum trecho</li>
-              <li>Use <code>&lt;hr&gt;</code> para separar as seções</li>
-              <li>Adicione um <code>&lt;h2&gt;</code> "Contato" com seu email usando quebras de linha (&lt;br&gt;)</li>
+            <ul class="exercise-checklist" id="exercise-checklist" data-module="3">
+              <li data-step="1"><input type="checkbox" id="step-3-1"><label for="step-3-1">Crie um arquivo chamado <code>sobre-mim.html</code></label></li>
+              <li data-step="2"><input type="checkbox" id="step-3-2"><label for="step-3-2">Use a estrutura completa do módulo anterior (&lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;)</label></li>
+              <li data-step="3"><input type="checkbox" id="step-3-3"><label for="step-3-3">Adicione um <code>&lt;h1&gt;</code> com seu nome</label></li>
+              <li data-step="4"><input type="checkbox" id="step-3-4"><label for="step-3-4">Adicione um <code>&lt;h2&gt;</code> "Sobre mim" e um parágrafo contando quem você é</label></li>
+              <li data-step="5"><input type="checkbox" id="step-3-5"><label for="step-3-5">Adicione um <code>&lt;h2&gt;</code> "Meus hobbies" e liste pelo menos 3 hobbies em parágrafos</label></li>
+              <li data-step="6"><input type="checkbox" id="step-3-6"><label for="step-3-6">Use <code>&lt;strong&gt;</code> para destacar palavras importantes</label></li>
+              <li data-step="7"><input type="checkbox" id="step-3-7"><label for="step-3-7">Use <code>&lt;em&gt;</code> para dar ênfase em algum trecho</label></li>
+              <li data-step="8"><input type="checkbox" id="step-3-8"><label for="step-3-8">Use <code>&lt;hr&gt;</code> para separar as seções</label></li>
+              <li data-step="9"><input type="checkbox" id="step-3-9"><label for="step-3-9">Adicione um <code>&lt;h2&gt;</code> "Contato" com seu email usando quebras de linha (&lt;br&gt;)</label></li>
             </ul>
           </div>
 
@@ -442,21 +479,15 @@
           </div>
         </div>
 
-        <!-- Navigation -->
         <div class="module-nav">
           <a href="../02-estrutura-basica/index.html" class="module-nav-btn module-nav-btn-prev">
-            <span>←</span>
-            <span>Anterior</span>
+            <span>←</span><span>Anterior</span>
           </a>
-
           <button class="module-nav-btn module-nav-btn-complete" id="btnComplete" data-module="3">
-            <span>✓</span>
-            <span>Marcar como Concluído</span>
+            <span>✓</span><span>Marcar como Concluído</span>
           </button>
-
           <a href="../04-links-e-navegacao/index.html" class="module-nav-btn module-nav-btn-next" id="btnNext">
-            <span>Próximo Módulo</span>
-            <span>→</span>
+            <span>Próximo Módulo</span><span>→</span>
           </a>
         </div>
 
@@ -476,9 +507,11 @@
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
     const html = document.documentElement;
-
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') { sunIcon.style.display = 'block'; moonIcon.style.display = 'none'; }
+      else { sunIcon.style.display = 'none'; moonIcon.style.display = 'block'; }
+    }
     updateThemeIcon(html.getAttribute('data-theme'));
-
     themeToggle.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
       const next = current === 'light' ? 'dark' : 'light';
@@ -487,53 +520,84 @@
       updateThemeIcon(next);
     });
 
-    function updateThemeIcon(theme) {
-      if (theme === 'dark') {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-      }
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const targetId = btn.dataset.copyTarget;
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return;
+        const codeText = targetEl.querySelector('pre').innerText;
+        try {
+          await navigator.clipboard.writeText(codeText);
+        } catch (err) {
+          const textarea = document.createElement('textarea');
+          textarea.value = codeText; textarea.style.position = 'fixed'; textarea.style.opacity = '0';
+          document.body.appendChild(textarea); textarea.select();
+          document.execCommand('copy'); document.body.removeChild(textarea);
+        }
+        const originalText = btn.querySelector('.copy-btn-text').textContent;
+        btn.classList.add('copied');
+        btn.querySelector('.copy-btn-text').textContent = 'Copiado!';
+        setTimeout(() => { btn.classList.remove('copied'); btn.querySelector('.copy-btn-text').textContent = originalText; }, 2000);
+      });
+    });
+
+    const checklistKey = 'html_curso_exercises_module_3';
+    let checkedSteps = {};
+    try { const stored = localStorage.getItem(checklistKey); if (stored) checkedSteps = JSON.parse(stored); } catch (e) { checkedSteps = {}; }
+    const checklist = document.getElementById('exercise-checklist');
+    if (checklist) {
+      checklist.querySelectorAll('li').forEach(li => {
+        const step = li.dataset.step;
+        const checkbox = li.querySelector('input[type="checkbox"]');
+        if (checkedSteps[step]) { checkbox.checked = true; li.classList.add('checked'); }
+        li.addEventListener('click', (e) => {
+          if (e.target.tagName === 'LABEL') return;
+          if (e.target.tagName !== 'INPUT') { checkbox.checked = !checkbox.checked; }
+          checkedSteps[step] = checkbox.checked;
+          li.classList.toggle('checked', checkbox.checked);
+          localStorage.setItem(checklistKey, JSON.stringify(checkedSteps));
+        });
+      });
     }
 
     const btnComplete = document.getElementById('btnComplete');
     const btnNext = document.getElementById('btnNext');
     const moduleId = parseInt(btnComplete.dataset.module);
-
-    if (ProgressTracker.isCompleted(moduleId)) {
-      btnComplete.classList.add('completed');
-      btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
-    }
-
-    btnComplete.addEventListener('click', () => {
-      if (!ProgressTracker.isCompleted(moduleId)) {
-        ProgressTracker.markComplete(moduleId);
+    function updateCompletionUI() {
+      if (ProgressTracker.isCompleted(moduleId)) {
         btnComplete.classList.add('completed');
         btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
-        btnComplete.style.transform = 'scale(1.05)';
-        setTimeout(() => { btnComplete.style.transform = ''; }, 200);
+        btnNext.style.opacity = '1'; btnNext.style.pointerEvents = 'auto';
+      } else {
+        btnNext.style.opacity = '0.5'; btnNext.style.pointerEvents = 'none';
+      }
+    }
+    updateCompletionUI();
+    btnComplete.addEventListener('click', () => {
+      if (!ProgressTracker.isCompleted(moduleId)) {
+        const success = ProgressTracker.markComplete(moduleId);
+        if (success) {
+          btnComplete.classList.add('completed');
+          btnComplete.innerHTML = '<span>✓</span><span>Concluído!</span>';
+          btnComplete.style.transform = 'scale(1.05)';
+          setTimeout(() => { btnComplete.style.transform = ''; }, 200);
+          updateCompletionUI();
+        }
       }
     });
 
-    function updateNextButton() {
-      if (ProgressTracker.isCompleted(moduleId)) {
-        btnNext.classList.remove('disabled');
-        btnNext.style.opacity = '1';
-        btnNext.style.pointerEvents = 'auto';
-      } else {
-        btnNext.classList.add('disabled');
-        btnNext.style.opacity = '0.5';
-        btnNext.style.pointerEvents = 'none';
-      }
-    }
+    const btnReset = document.getElementById('btnResetProgress');
+    if (btnReset) {
+      btnReset.addEventListener('click', () => {
+        if (confirm('Tem certeza que deseja resetar todo o seu progresso?
 
-    setTimeout(updateNextButton, 100);
-    const originalUpdateUI = ProgressTracker.updateUI;
-    ProgressTracker.updateUI = function() {
-      originalUpdateUI.call(this);
-      updateNextButton();
-    };
+Esta ação apagará todos os módulos concluídos e checkboxes marcados. Não pode ser desfeita.')) {
+          ProgressTracker.reset();
+          alert('Progresso resetado com sucesso! A página será recarregada.');
+          location.reload();
+        }
+      });
+    }
   </script>
 </body>
 </html>
