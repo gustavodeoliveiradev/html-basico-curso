@@ -149,6 +149,7 @@
 /* ---------- Main Content ---------- */
 .main {
   flex: 1;
+  min-width: 0; /* evita que filhos largos (ex: tabelas) empurrem o layout inteiro */
   margin-left: var(--sidebar-width);
   min-height: 100vh;
   display: flex;
@@ -166,7 +167,7 @@
   align-items: center;
   justify-content: space-between;
   backdrop-filter: blur(8px);
-  background-color: rgba(var(--bg-body), 0.9);
+  background-color: rgba(var(--bg-body-rgb), 0.9);
 }
 
 .main-content {
