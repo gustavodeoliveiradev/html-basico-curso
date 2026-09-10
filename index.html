@@ -195,7 +195,7 @@
 
           <div class="modules-grid">
             <!-- Módulo 01 -->
-            <div class="module-card" data-module-id="1" style="--module-color: var(--mod-01);">
+            <div class="module-card" data-module-id="1" data-href="./modules/01-introducao/index.html" style="--module-color: var(--mod-01);">
               <div class="module-number">1</div>
               <h3 class="module-title">Introdução ao HTML</h3>
               <p class="module-desc">O que é HTML, sua história, como funciona a web e as ferramentas que você precisa para começar.</p>
@@ -206,7 +206,7 @@
             </div>
 
             <!-- Módulo 02 -->
-            <div class="module-card" data-module-id="2" style="--module-color: var(--mod-02);">
+            <div class="module-card" data-module-id="2" data-href="./modules/02-estrutura-basica/index.html" style="--module-color: var(--mod-02);">
               <div class="module-number">2</div>
               <h3 class="module-title">Estrutura Básica</h3>
               <p class="module-desc">Conhecendo o &lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt; e &lt;body&gt;. A anatomia de uma página HTML.</p>
@@ -217,7 +217,7 @@
             </div>
 
             <!-- Módulo 03 -->
-            <div class="module-card" data-module-id="3" style="--module-color: var(--mod-03);">
+            <div class="module-card" data-module-id="3" data-href="./modules/03-textos-e-titulos/index.html" style="--module-color: var(--mod-03);">
               <div class="module-number">3</div>
               <h3 class="module-title">Textos e Títulos</h3>
               <p class="module-desc">Trabalhando com &lt;h1&gt; a &lt;h6&gt;, parágrafos, quebras de linha e linhas horizontais.</p>
@@ -228,7 +228,7 @@
             </div>
 
             <!-- Módulo 04 -->
-            <div class="module-card" data-module-id="4" style="--module-color: var(--mod-04);">
+            <div class="module-card" data-module-id="4" data-href="./modules/04-links-e-navegacao/index.html" style="--module-color: var(--mod-04);">
               <div class="module-number">4</div>
               <h3 class="module-title">Links e Navegação</h3>
               <p class="module-desc">Criando links com &lt;a&gt;, navegação entre páginas, âncoras e atributos importantes.</p>
@@ -239,7 +239,7 @@
             </div>
 
             <!-- Módulo 05 -->
-            <div class="module-card" data-module-id="5" style="--module-color: var(--mod-05);">
+            <div class="module-card" data-module-id="5" data-href="./modules/05-imagens/index.html" style="--module-color: var(--mod-05);">
               <div class="module-number">5</div>
               <h3 class="module-title">Imagens</h3>
               <p class="module-desc">Inserindo imagens com &lt;img&gt;, atributo alt, caminhos relativos e absolutos.</p>
@@ -250,7 +250,7 @@
             </div>
 
             <!-- Módulo 06 -->
-            <div class="module-card" data-module-id="6" style="--module-color: var(--mod-06);">
+            <div class="module-card" data-module-id="6" data-href="./modules/06-listas/index.html" style="--module-color: var(--mod-06);">
               <div class="module-number">6</div>
               <h3 class="module-title">Listas</h3>
               <p class="module-desc">Listas ordenadas, não ordenadas, de definição e listas aninhadas.</p>
@@ -261,7 +261,7 @@
             </div>
 
             <!-- Módulo 07 -->
-            <div class="module-card" data-module-id="7" style="--module-color: var(--mod-07);">
+            <div class="module-card" data-module-id="7" data-href="./modules/07-tabelas/index.html" style="--module-color: var(--mod-07);">
               <div class="module-number">7</div>
               <h3 class="module-title">Tabelas</h3>
               <p class="module-desc">Construindo tabelas com &lt;table&gt;, cabeçalhos, células, linhas e boas práticas.</p>
@@ -272,7 +272,7 @@
             </div>
 
             <!-- Módulo 08 -->
-            <div class="module-card" data-module-id="8" style="--module-color: var(--mod-08);">
+            <div class="module-card" data-module-id="8" data-href="./modules/08-formularios/index.html" style="--module-color: var(--mod-08);">
               <div class="module-number">8</div>
               <h3 class="module-title">Formulários</h3>
               <p class="module-desc">Criando formulários interativos com inputs, labels, buttons e diferentes tipos de campos.</p>
@@ -283,7 +283,7 @@
             </div>
 
             <!-- Módulo 09 -->
-            <div class="module-card" data-module-id="9" style="--module-color: var(--mod-09);">
+            <div class="module-card" data-module-id="9" data-href="./modules/09-semantica-html5/index.html" style="--module-color: var(--mod-09);">
               <div class="module-number">9</div>
               <h3 class="module-title">Semântica HTML5</h3>
               <p class="module-desc">Tags semânticas como &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;footer&gt; e acessibilidade.</p>
@@ -307,33 +307,6 @@
 
   <script src="./js/navigation.js"></script>
   <script src="./js/progress.js"></script>
-  <script>
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-    const html = document.documentElement;
-
-    // Sync icon with current theme (already set by anti-flash script)
-    updateThemeIcon(html.getAttribute('data-theme'));
-
-    themeToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'light' ? 'dark' : 'light';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('html_curso_theme', next);
-      updateThemeIcon(next);
-    });
-
-    function updateThemeIcon(theme) {
-      if (theme === 'dark') {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-      }
-    }
-  </script>
+  <script src="./js/module-common.js"></script>
 </body>
 </html>
