@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Links e Navegação — HTML Básico</title>
 
-  <!-- Anti-flash: aplica tema IMEDIATAMENTE antes de renderizar -->
   <script>
     (function() {
       const saved = localStorage.getItem('html_curso_theme');
@@ -20,6 +19,47 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/theme.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+
+  <style>
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; background: var(--bg-card);
+      border: 1px solid var(--border-color); border-radius: 8px;
+      font-size: var(--text-xs); font-weight: 600;
+      color: var(--text-secondary); cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-family);
+    }
+    .copy-btn:hover {
+      background: var(--bg-hover); border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .copy-btn.copied {
+      background: #d1fae5; border-color: #10b981; color: #065f46;
+    }
+    [data-theme="dark"] .copy-btn.copied {
+      background: rgba(16, 185, 129, 0.2); color: #34d399;
+    }
+    .exercise-checklist {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .exercise-checklist li {
+      padding: var(--space-2) 0;
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      color: var(--text-secondary); font-size: var(--text-sm);
+      cursor: pointer; transition: all var(--transition-fast);
+      border-radius: 8px; padding: var(--space-2) var(--space-3);
+    }
+    .exercise-checklist li:hover { background: var(--bg-hover); }
+    .exercise-checklist input[type="checkbox"] {
+      width: 18px; height: 18px; min-width: 18px; margin-top: 2px;
+      accent-color: var(--color-primary); cursor: pointer;
+    }
+    .exercise-checklist li.checked {
+      text-decoration: line-through; opacity: 0.6;
+    }
+    .exercise-checklist li.checked:hover { opacity: 0.8; }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -54,7 +94,7 @@
           <span class="sidebar-link-number" style="background: var(--mod-03); color: white;">3</span>
           <span>Textos e Títulos</span>
         </a>
-        <a href="../04-links-e-navegacao/index.html" class="sidebar-link" data-module-id="4">
+        <a href="../04-links-e-navegacao/index.html" class="sidebar-link active" data-module-id="4">
           <span class="sidebar-link-number" style="background: var(--mod-04); color: white;">4</span>
           <span>Links e Navegação</span>
         </a>
@@ -78,13 +118,14 @@
           <span class="sidebar-link-number" style="background: var(--mod-09); color: white;">9</span>
           <span>Semântica HTML5</span>
         </a>
-      </nav>
 
         <div class="sidebar-section-title" style="margin-top: var(--space-4);">Progresso</div>
         <button class="sidebar-link" id="btnResetProgress" style="color: #ef4444; width: 100%; text-align: left;">
           <span class="sidebar-link-number" style="background: #ef4444; color: white;">🔄</span>
           <span>Resetar Progresso</span>
         </button>
+      </nav>
+
       <div class="sidebar-footer">
         <span style="font-size: var(--text-xs); color: var(--text-muted);">v1.0.0</span>
         <span style="font-size: var(--text-xs); color: var(--text-muted);">🚀</span>
@@ -106,19 +147,396 @@
       </header>
 
       <div class="main-content">
-        <!-- Conteúdo do módulo será inserido aqui -->
 
-        <div class="card" style="text-align: center; padding: var(--space-16);">
-          <div style="font-size: 4rem; margin-bottom: var(--space-4);">🚧</div>
-          <h2 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
-            Módulo em Construção
-          </h2>
-          <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto var(--space-6);">
-            Este módulo ainda está sendo desenvolvido. Volte em breve para conferir o conteúdo completo!
+        <div class="module-header">
+          <div class="module-header-top">
+            <span class="module-header-badge" style="background: var(--mod-04);">Módulo 04</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted);">⏱️ ~20 minutos</span>
+          </div>
+          <h1 class="module-header-title">Links e Navegação</h1>
+          <p class="module-header-desc">
+            Aprenda a conectar páginas com links, entender caminhos absolutos e relativos, criar âncoras, links de email e telefone e montar um menu de navegação.
           </p>
-          <a href="../../index.html" class="btn btn-primary">
-            <span>←</span>
-            <span>Voltar ao Início</span>
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(244,63,94,0.1);">🔗</span>
+            A tag &lt;a&gt; e o atributo href
+          </h2>
+          <div class="content-text">
+            <p>O que faz a web ser uma <strong>teia</strong> (web, em inglês) é justamente a possibilidade de ir de uma página para outra clicando. Isso é feito com os <strong>links</strong> (ou <em>hiperlinks</em>), e a tag responsável por eles é a <code>&lt;a&gt;</code>, de <em>anchor</em> (âncora).</p>
+            <p>Vamos por partes. Veja o link mais simples possível:</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Seu primeiro link</span>
+              <button class="copy-btn" data-copy-target="code-a-basic" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-a-basic">
+              <pre><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://www.wikipedia.org"</span><span class="code-tag">&gt;</span><span class="code-text">Visitar a Wikipédia</span><span class="code-tag">&lt;/a&gt;</span></pre>
+            </div>
+          </div>
+          <div class="content-text">
+            <p>Esse código tem quatro peças. Vamos identificar cada uma:</p>
+            <p><strong>1.</strong> <code>&lt;a ...&gt;</code> é a <strong>tag de abertura</strong>: ela avisa ao navegador "aqui começa um link".<br><strong>2.</strong> <code>href="..."</code> é um <strong>atributo</strong>. O nome <code>href</code> vem de <em>hypertext reference</em> e guarda <strong>para onde</strong> o link leva. O endereço vai sempre entre aspas.<br><strong>3.</strong> <code>Visitar a Wikipédia</code> é o <strong>texto do link</strong>: a parte que a pessoa vê e clica.<br><strong>4.</strong> <code>&lt;/a&gt;</code> é a <strong>tag de fechamento</strong>, que encerra o link. Se você esquecer dela, todo o texto seguinte vira link!</p>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header"><span>👁️ Resultado</span></div>
+            <div class="preview-box-body"><p style="color: var(--text-primary);"><a href="#" onclick="return false;" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Visitar a Wikipédia</a></p></div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">💡</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Atributos: o padrão <code>nome="valor"</code></div>
+              <div class="info-box-text">Os atributos dão <strong>informações extras</strong> a uma tag e sempre ficam dentro da tag de abertura, nunca na de fechamento. O padrão é <code>nome="valor"</code>. Você já viu isso no módulo 2 com <code>lang="pt-BR"</code> no <code>&lt;html&gt;</code>. Agora vai usar muito o <code>href</code>.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(99,102,241,0.1);">🗺️</span>
+            Links externos e links internos (caminhos)
+          </h2>
+          <div class="content-text">
+            <p>O valor do <code>href</code> pode ser de dois tipos, e entender a diferença é uma das coisas mais importantes de todo o curso:</p>
+            <p><strong>Link absoluto (externo):</strong> o endereço completo, começando com <code>https://</code>. Serve para levar a <em>outros sites</em>.<br><strong>Link relativo (interno):</strong> só o caminho até outro arquivo <em>do seu próprio site</em>. Funciona como dar direções a partir de onde você está.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Absoluto e relativos</span>
+              <button class="copy-btn" data-copy-target="code-paths" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-paths">
+              <pre><span class="code-comment">&lt;!-- Absoluto: outro site --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://developer.mozilla.org"</span><span class="code-tag">&gt;</span><span class="code-text">MDN Web Docs</span><span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Relativo: arquivo na MESMA pasta --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"sobre.html"</span><span class="code-tag">&gt;</span><span class="code-text">Sobre mim</span><span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Relativo: arquivo dentro de uma subpasta --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"paginas/contato.html"</span><span class="code-tag">&gt;</span><span class="code-text">Contato</span><span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Relativo: subir UMA pasta (..) e entrar em outra --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"../index.html"</span><span class="code-tag">&gt;</span><span class="code-text">Voltar ao início</span><span class="code-tag">&lt;/a&gt;</span></pre>
+            </div>
+          </div>
+          <div class="content-text">
+            <p>Imagine esta organização de pastas:</p>
+          </div>
+
+          <div class="diagram-box" style="text-align: left;">
+<pre style="margin:0; font-family: var(--font-mono); font-size: var(--text-sm); color: var(--text-primary); overflow-x: auto;">meu-site/
+├── index.html
+├── sobre.html
+└── paginas/
+    └── contato.html</pre>
+          </div>
+          <div class="content-text">
+            <p>Dentro do <code>index.html</code>, para ir ao contato você escreve <code>paginas/contato.html</code> (entra na pasta). Já dentro do <code>contato.html</code>, para voltar ao início você escreve <code>../index.html</code>, onde os dois pontos <code>..</code> significam "suba uma pasta".</p>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-box-icon">⚠️</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Erro número 1 dos iniciantes: link que "não abre"</div>
+              <div class="info-box-text">Se o link dá erro 404, quase sempre o caminho está errado: letra maiúscula onde devia ser minúscula (<code>Sobre.html</code> ≠ <code>sobre.html</code> no servidor), espaço no nome do arquivo, ou pasta errada. Dica: use sempre <strong>letras minúsculas, sem espaços e sem acentos</strong> nos nomes de arquivos, trocando espaços por hífen (<code>meu-curriculo.html</code>).</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(16,185,129,0.1);">🪟</span>
+            Abrindo o link em uma nova aba
+          </h2>
+          <div class="content-text">
+            <p>Por padrão, o link abre na mesma aba, substituindo a página atual. Para abrir em uma <strong>nova aba</strong>, usamos o atributo <code>target="_blank"</code>:</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Link em nova aba</span>
+              <button class="copy-btn" data-copy-target="code-blank" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-blank">
+              <pre><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://www.wikipedia.org"</span> <span class="code-attr">target</span>=<span class="code-value">"_blank"</span> <span class="code-attr">rel</span>=<span class="code-value">"noopener noreferrer"</span><span class="code-tag">&gt;</span><span class="code-text">Wikipédia (nova aba)</span><span class="code-tag">&lt;/a&gt;</span></pre>
+            </div>
+          </div>
+          <div class="content-text">
+            <p>Repare que adicionamos também <code>rel="noopener noreferrer"</code>. Ele é uma medida de <strong>segurança</strong>: impede que a página aberta tenha algum controle sobre a sua página original. É uma boa prática sempre usar os dois juntos.</p>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">🎯</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Quando usar nova aba?</div>
+              <div class="info-box-text">Use para <strong>links externos</strong> (outros sites), assim a pessoa não perde o seu site. Para links <strong>internos</strong> (suas próprias páginas), o ideal é deixar abrir na mesma aba, já que a pessoa está navegando pelo seu site.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(245,158,11,0.1);">📍</span>
+            Âncoras: links para dentro da mesma página
+          </h2>
+          <div class="content-text">
+            <p>Em páginas longas (como este módulo!) é útil pular direto para uma seção. Para isso criamos uma <strong>âncora</strong> em dois passos:</p>
+            <p><strong>Passo 1:</strong> dê um <code>id</code> único à seção de destino.<br><strong>Passo 2:</strong> crie um link cujo <code>href</code> é <code>#</code> seguido do mesmo id.</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Link âncora</span>
+              <button class="copy-btn" data-copy-target="code-anchor" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-anchor">
+              <pre><span class="code-comment">&lt;!-- Passo 2: o link (pode estar no topo da página) --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"#contato"</span><span class="code-tag">&gt;</span><span class="code-text">Ir para o contato</span><span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- ...muito conteúdo no meio... --&gt;</span>
+
+<span class="code-comment">&lt;!-- Passo 1: o destino, com o id --&gt;</span>
+<span class="code-tag">&lt;h2</span> <span class="code-attr">id</span>=<span class="code-value">"contato"</span><span class="code-tag">&gt;</span><span class="code-text">Contato</span><span class="code-tag">&lt;/h2&gt;</span>
+<span class="code-tag">&lt;p</span><span class="code-tag">&gt;</span><span class="code-text">Fale comigo pelo email.</span><span class="code-tag">&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-box-icon">⚠️</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Atenção ao #</div>
+              <div class="info-box-text">O <code>id</code> é escrito <strong>sem</strong> o <code>#</code> (<code>id="contato"</code>), mas o link usa <strong>com</strong> o <code>#</code> (<code>href="#contato"</code>). E cada <code>id</code> deve ser único na página: não repita o mesmo id em dois elementos.</div>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">💡</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Truque útil: voltar ao topo</div>
+              <div class="info-box-text">Um link <code>&lt;a href="#"&gt;Voltar ao topo&lt;/a&gt;</code> (só com o <code>#</code>) leva ao início da página. Muito usado em rodapés.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(14,165,233,0.1);">📧</span>
+            Links para email e telefone
+          </h2>
+          <div class="content-text">
+            <p>Links não servem só para páginas. Com os prefixos <code>mailto:</code> e <code>tel:</code> você abre o programa de email ou o discador do celular:</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Email e telefone</span>
+              <button class="copy-btn" data-copy-target="code-mailto" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-mailto">
+              <pre><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"mailto:contato@exemplo.com"</span><span class="code-tag">&gt;</span><span class="code-text">Envie um email</span><span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"tel:+5511999999999"</span><span class="code-tag">&gt;</span><span class="code-text">Ligue: (11) 99999-9999</span><span class="code-tag">&lt;/a&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header"><span>👁️ Resultado</span></div>
+            <div class="preview-box-body"><p style="color: var(--text-primary); margin-bottom: var(--space-2);"><a href="#" onclick="return false;" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Envie um email</a></p><p style="color: var(--text-primary);"><a href="#" onclick="return false;" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Ligue: (11) 99999-9999</a></p></div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">📱</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Detalhe do telefone</div>
+              <div class="info-box-text">No <code>tel:</code>, escreva o número <strong>sem espaços, parênteses ou traços</strong>, com o código do país (<code>+55</code> para o Brasil). O texto visível pode ter a formatação que você quiser.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(139,92,246,0.1);">♿</span>
+            Escrevendo bons textos de link
+          </h2>
+          <div class="content-text">
+            <p>O texto do link precisa fazer sentido <strong>sozinho</strong>. Quem usa leitor de tela (pessoas cegas, por exemplo) costuma navegar ouvindo só a lista de links da página. Ouvir "clique aqui" dez vezes não ajuda ninguém. Compare:</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Ruim x Bom</span>
+              <button class="copy-btn" data-copy-target="code-goodbad" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-goodbad">
+              <pre><span class="code-comment">&lt;!-- Ruim: não diz para onde vai --&gt;</span>
+<span class="code-tag">&lt;p</span><span class="code-tag">&gt;</span><span class="code-text">Para ver o curso completo, </span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"curso.html"</span><span class="code-tag">&gt;</span><span class="code-text">clique aqui</span><span class="code-tag">&lt;/a&gt;</span><span class="code-text">.</span><span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">&lt;!-- Bom: o link descreve o destino --&gt;</span>
+<span class="code-tag">&lt;p</span><span class="code-tag">&gt;</span><span class="code-text">Veja o </span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"curso.html"</span><span class="code-tag">&gt;</span><span class="code-text">curso completo de HTML</span><span class="code-tag">&lt;/a&gt;</span><span class="code-text">.</span><span class="code-tag">&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+          <div class="content-text">
+            <p>Você também pode usar o atributo <code>title</code> para uma dica que aparece ao passar o mouse, mas não dependa dele: celulares não têm "passar o mouse", então o texto do link continua sendo o mais importante.</p>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(236,72,153,0.1);">🧭</span>
+            Criando um menu de navegação com &lt;nav&gt;
+          </h2>
+          <div class="content-text">
+            <p>Quando um grupo de links forma o <strong>menu principal</strong> do site, o correto é envolvê-los na tag <code>&lt;nav&gt;</code> (de <em>navigation</em>). Ela não muda a aparência, mas diz ao navegador e aos leitores de tela: "aqui está a navegação".</p>
+          </div>
+
+          <div class="code-example">
+            <div class="code-example-header">
+              <span class="code-example-title">📄 Menu simples</span>
+              <button class="copy-btn" data-copy-target="code-nav" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-nav">
+              <pre><span class="code-tag">&lt;nav</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"index.html"</span><span class="code-tag">&gt;</span><span class="code-text">Início</span><span class="code-tag">&lt;/a&gt;</span><span class="code-text"> |
+  </span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"sobre.html"</span><span class="code-tag">&gt;</span><span class="code-text">Sobre</span><span class="code-tag">&lt;/a&gt;</span><span class="code-text"> |
+  </span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"contato.html"</span><span class="code-tag">&gt;</span><span class="code-text">Contato</span><span class="code-tag">&lt;/a&gt;</span>
+<span class="code-tag">&lt;/nav&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="preview-box">
+            <div class="preview-box-header"><span>👁️ Resultado</span></div>
+            <div class="preview-box-body"><nav style="color: var(--text-primary);"><a href="#" onclick="return false;" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Início</a> | <a href="#" onclick="return false;" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Sobre</a> | <a href="#" onclick="return false;" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Contato</a></nav></div>
+          </div>
+
+          <div class="info-box">
+            <span class="info-box-icon">📚</span>
+            <div class="info-box-content">
+              <div class="info-box-title">Spoiler do futuro</div>
+              <div class="info-box-text">Os menus de verdade costumam usar <strong>listas</strong> dentro do <code>&lt;nav&gt;</code>. Você vai aprender listas no módulo 6 e a tag <code>&lt;nav&gt;</code> com mais profundidade no módulo 9 (Semântica HTML5). Por enquanto, os links separados por <code>|</code> funcionam bem!</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="content-section">
+          <h2 class="content-section-title">
+            <span class="content-section-title-icon" style="background: rgba(99,102,241,0.1);">📋</span>
+            Resumo
+          </h2>
+
+          <div class="tags-table-wrapper">
+            <table class="tags-table">
+              <thead>
+                <tr><th>Elemento / Atributo</th><th>Função</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>&lt;a&gt;</code></td><td>Cria um link</td></tr>
+                <tr><td><code>href="..."</code></td><td>Destino do link (URL, caminho, <code>#id</code>, <code>mailto:</code>, <code>tel:</code>)</td></tr>
+                <tr><td><code>target="_blank"</code></td><td>Abre o link em nova aba</td></tr>
+                <tr><td><code>rel="noopener noreferrer"</code></td><td>Segurança para links em nova aba</td></tr>
+                <tr><td><code>id="..."</code></td><td>Identifica um destino de âncora</td></tr>
+                <tr><td><code>&lt;nav&gt;</code></td><td>Agrupa os links de navegação</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="exercise-section">
+          <div class="exercise-badge">🎯 Exercício Prático</div>
+          <h2 class="exercise-title">Monte um Mini Site de 3 Páginas</h2>
+          <p class="exercise-desc">
+            Hora de colocar os links em prática criando um site pequeno, com navegação entre as páginas. Clique nos quadrados para marcar cada passo concluído.
+          </p>
+
+          <div class="exercise-task">
+            <div class="exercise-task-title">📋 Instruções:</div>
+            <ul class="exercise-checklist" id="exercise-checklist" data-module="4">
+              <li data-step="1"><input type="checkbox" id="step-4-1"><label for="step-4-1">Crie uma pasta <code>meu-site</code> com três arquivos: <code>index.html</code>, <code>sobre.html</code> e <code>contato.html</code></label></li>
+              <li data-step="2"><input type="checkbox" id="step-4-2"><label for="step-4-2">Em cada arquivo, use a estrutura completa do módulo 2 e um <code>&lt;h1&gt;</code> com o nome da página</label></li>
+              <li data-step="3"><input type="checkbox" id="step-4-3"><label for="step-4-3">Em cada página, crie um <code>&lt;nav&gt;</code> com links para as <strong>três</strong> páginas</label></li>
+              <li data-step="4"><input type="checkbox" id="step-4-4"><label for="step-4-4">Teste: abra o <code>index.html</code> no navegador e navegue entre as páginas clicando nos links</label></li>
+              <li data-step="5"><input type="checkbox" id="step-4-5"><label for="step-4-5">No <code>index.html</code>, adicione um link <strong>externo</strong> para um site de sua escolha</label></li>
+              <li data-step="6"><input type="checkbox" id="step-4-6"><label for="step-4-6">Faça esse link externo abrir em <strong>nova aba</strong>, com <code>target</code> e <code>rel</code></label></li>
+              <li data-step="7"><input type="checkbox" id="step-4-7"><label for="step-4-7">No <code>sobre.html</code>, crie 3 títulos <code>&lt;h2&gt;</code> com <code>id</code> e, no topo, um link âncora para cada um</label></li>
+              <li data-step="8"><input type="checkbox" id="step-4-8"><label for="step-4-8">No <code>contato.html</code>, adicione um link <code>mailto:</code> e um link <code>tel:</code></label></li>
+              <li data-step="9"><input type="checkbox" id="step-4-9"><label for="step-4-9">Revise: nenhum link com o texto "clique aqui"! Todos devem descrever o destino</label></li>
+            </ul>
+          </div>
+
+          <div class="code-example" style="margin-bottom: 0;">
+            <div class="code-example-header">
+              <span class="code-example-title">💡 Ponto de partida: index.html</span>
+              <button class="copy-btn" data-copy-target="code-exercise" aria-label="Copiar código">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copy-btn-text">Copiar código</span>
+              </button>
+            </div>
+            <div class="code-example-body" id="code-exercise">
+              <pre><span class="code-text">&lt;!DOCTYPE html&gt;
+</span><span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"pt-BR"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"viewport"</span> <span class="code-attr">content</span>=<span class="code-value">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;title</span><span class="code-tag">&gt;</span><span class="code-text">Início - Meu Site</span><span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;nav</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"index.html"</span><span class="code-tag">&gt;</span><span class="code-text">Início</span><span class="code-tag">&lt;/a&gt;</span><span class="code-text"> |
+    </span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"sobre.html"</span><span class="code-tag">&gt;</span><span class="code-text">Sobre</span><span class="code-tag">&lt;/a&gt;</span><span class="code-text"> |
+    </span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"contato.html"</span><span class="code-tag">&gt;</span><span class="code-text">Contato</span><span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;/nav&gt;</span>
+
+  <span class="code-tag">&lt;h1</span><span class="code-tag">&gt;</span><span class="code-text">Bem-vindo ao meu site</span><span class="code-tag">&lt;/h1&gt;</span>
+  <span class="code-comment">&lt;!-- Continue daqui: link externo, nova aba... --&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-nav">
+          <a href="../03-textos-e-titulos/index.html" class="module-nav-btn module-nav-btn-prev">
+            <span>←</span><span>Anterior</span>
+          </a>
+          <button class="module-nav-btn module-nav-btn-complete" id="btnComplete" data-module="4">
+            <span>✓</span><span>Marcar como Concluído</span>
+          </button>
+          <a href="../05-imagens/index.html" class="module-nav-btn module-nav-btn-next" id="btnNext">
+            <span>Próximo Módulo</span><span>→</span>
           </a>
         </div>
 
